@@ -408,7 +408,7 @@ async def _stream_chat(message: str, thread_id: str) -> AsyncGenerator[dict, Non
         for i, word in enumerate(words):
             chunk_text = word + (" " if i < len(words) - 1 else "")
             yield _sse("token", {"text": chunk_text})
-            await asyncio.sleep(0)
+            await asyncio.sleep(0.02)
 
         # ── Done event ──────────────────────────────────────────
         done_payload = {
@@ -814,7 +814,7 @@ async def _mock_stream(message: str, thread_id: str, request_id: str) -> AsyncGe
     for i, word in enumerate(words):
         chunk = word + (" " if i < len(words) - 1 else "")
         yield _sse("token", {"text": chunk})
-        await asyncio.sleep(0)
+        await asyncio.sleep(0.02)
 
     status = "ok" if confidence in ("high", "mid") else "low_confidence"
     intent_tag, route_reason = _infer_intent_tag(message)
