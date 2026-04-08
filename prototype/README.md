@@ -27,10 +27,21 @@ prototype/
 
 ## Cài đặt & Chạy
 
-### 1. Cài Python dependencies
+### 1. Khởi tạo môi trường ảo và cài dependencies
+
+Nên sử dụng môi trường ảo (virtual environment) để cài đặt các thư viện riêng biệt, tránh xung đột:
 
 ```powershell
-pip install -r requirements.txt
+cd backend
+python -m venv venv
+
+# Kích hoạt venv (trên Windows):
+venv\Scripts\activate
+# Hoặc trên macOS/Linux:
+# source venv/bin/activate
+
+# Cài đặt thư viện (trỏ về file requirements.txt ở thư mục gốc)
+pip install -r ../requirements.txt
 ```
 
 ### 2. Cấu hình API Keys
@@ -42,6 +53,17 @@ Mở file `.env` và điền ít nhất **một** API key:
 ANTHROPIC_API_KEY=sk-ant-...       # Claude 3.5 Sonnet
 GITHUB_PAT=ghp_...                  # GitHub Models (GPT-4o)
 GOOGLE_API_KEY=AIza...              # Gemini 1.5 Flash
+
+# LangSmith tracing
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+LANGCHAIN_API_KEY=lsv2_...
+LANGCHAIN_PROJECT=vinfast-ai-chatbot
+
+# Response cache (MVP)
+ENABLE_RESPONSE_CACHE=true
+CACHE_TTL_POLICY_SECONDS=600
+CACHE_TTL_REVIEW_SECONDS=300
 ```
 
 > Nếu không có API key nào, server chạy ở **chế độ Mock** với dữ liệu giả lập. Frontend vẫn đầy đủ tính năng.
@@ -53,6 +75,7 @@ python backend/main.py
 ```
 
 Server chạy tại: `http://localhost:8000`
+
 - Docs: `http://localhost:8000/docs`
 - Health: `http://localhost:8000/health`
 
@@ -81,27 +104,29 @@ User → [Frontend SSE]
 
 ### SSE Events từ `/chat`
 
-| Event | Nội dung | Mô tả |
-|-------|----------|-------|
-| `start` | `{request_id, thread_id}` | Bắt đầu xử lý |
-| `thinking` | `{type, text}` | Chain-of-thought từng bước |
-| `tool_end` | `{tool_name, status, summary}` | Tool đã chạy xong |
-| `token` | `{text}` | Từng từ của câu trả lời |
-| `done` | `{tools_used, confidence, ...}` | Kết thúc, metadata |
-| `error` | `{message, detail}` | Lỗi xử lý |
+| Event      | Nội dung                        | Mô tả                      |
+| ---------- | ------------------------------- | -------------------------- |
+| `start`    | `{request_id, thread_id}`       | Bắt đầu xử lý              |
+| `thinking` | `{type, text}`                  | Chain-of-thought từng bước |
+| `tool_end` | `{tool_name, status, summary}`  | Tool đã chạy xong          |
+| `token`    | `{text}`                        | Từng từ của câu trả lời    |
+| `done`     | `{tools_used, confidence, ...}` | Kết thúc, metadata         |
+| `error`    | `{message, detail}`             | Lỗi xử lý                  |
+
+`done` hiện bao gồm thêm: `status`, `citations`, `fallback_reason`, `intent_tag`, `route_reason`, `cache_hit`, `latency_ms`.
 
 ---
 
 ## Tools của Agent
 
-| Tool | Chức năng |
-|------|-----------|
-| `search_cars` | Tìm kiếm thông tin và giá xe |
-| `compare_models` | So sánh 2+ mẫu xe |
-| `get_battery_policy` | Chính sách thuê/mua pin GSM |
-| `get_reviews` | Review thực tế từ cộng đồng (có time-weight) |
-| `book_maintenance` | Thông tin đặt lịch bảo dưỡng |
-| `get_charging_info` | Mạng sạc VinFast |
+| Tool                 | Chức năng                                    |
+| -------------------- | -------------------------------------------- |
+| `search_cars`        | Tìm kiếm thông tin và giá xe                 |
+| `compare_models`     | So sánh 2+ mẫu xe                            |
+| `get_battery_policy` | Chính sách thuê/mua pin GSM                  |
+| `get_reviews`        | Review thực tế từ cộng đồng (có time-weight) |
+| `book_maintenance`   | Thông tin đặt lịch bảo dưỡng                 |
+| `get_charging_info`  | Mạng sạc VinFast                             |
 
 ---
 
@@ -122,7 +147,20 @@ curl http://localhost:8000/health
 
 # 5. Test tool status
 # Hỏi "Tôi muốn bảo dưỡng VF8" → frontend hiển thị tool book_maintenance running
+
+# 6. Test feedback loop
+# Click thumbs up/down trên frontend, backend nhận POST /feedback
+
+# 7. Chạy eval nhanh
+python backend/evals/run_eval.py --base-url http://localhost:8000
 ```
+
+## LangSmith instructions (MVP)
+
+1. Bật các biến môi trường `LANGCHAIN_TRACING_V2`, `LANGCHAIN_API_KEY`, `LANGCHAIN_PROJECT` trong `.env`.
+2. Khởi động backend và thực hiện các phiên chat test trên frontend.
+3. Mở LangSmith dashboard để xem traces theo từng request (`request_id`, `intent_tag`, tools gọi và latency).
+4. Dùng `backend/evals/sample_dataset.json` làm bộ test khởi tạo, sau đó thay bằng Golden Dataset 100 câu trước demo.
 
 ---
 
@@ -149,6 +187,13 @@ get_llm()
 - **Feedback** — Thumbs up/down, copy, view reasoning
 - **Memory** — Conversation context theo `thread_id`
 
+## MVP Improvements Implemented
+
+- **Token streaming thực**: backend nhường event loop mỗi token (`await asyncio.sleep(0)`) để frontend render theo thời gian thực thay vì dồn cuối response.
+- **Lưu/Nạp hội thoại sidebar (không DB)**: frontend lưu conversations vào `localStorage`, hỗ trợ tạo hội thoại mới, mở lại hội thoại cũ và clear hội thoại hiện tại.
+- **Confidence động**: backend tính `confidence_score` theo trạng thái tool + độ phủ citations + độ đa dạng nguồn; frontend hiển thị badge mức tin cậy và tooltip score.
+- **Citations đa nguồn**: backend tổng hợp nhiều nguồn theo tool output, dedupe URL, giới hạn trùng domain và trả top citations liên quan.
+
 ---
 
-*Nhóm 2 — AI Product Hackathon VinFast*
+_Nhóm 2 — AI Product Hackathon VinFast_

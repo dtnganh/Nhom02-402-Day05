@@ -1,0 +1,17 @@
+[
+  {
+    "question": "VF6 thue pin bao nhieu tien moi thang?",
+    "expected_keywords": ["vf6", "thue", "pin", "vinfast.vn"],
+    "required_status": "ok"
+  },
+  {
+    "question": "VF8 Plus chay duong truong co on khong?",
+    "expected_keywords": ["review", "vf8", "vinfast.vn"],
+    "required_status": "ok"
+  },
+  {
+    "question": "Khuyen mai VF3 thang nay la gi?",
+    "expected_keywords": ["xac minh", "tu van"],
+    "required_status": "low_confidence"
+  }
+]
