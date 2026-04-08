@@ -1026,6 +1026,35 @@ async def submit_feedback(body: FeedbackRequest):
         body.status,
         body.reason,
     )
+    
+    # Export feedback to logging/feedback.json
+    feedback_file = LOG_DIR / "feedback.json"
+    feedback_data = {
+        "timestamp": time.time(),
+        "request_id": body.request_id,
+        "thread_id": body.thread_id,
+        "action": body.action,
+        "reason": body.reason,
+        "intent_tag": body.intent_tag,
+        "status": body.status
+    }
+    
+    try:
+        data = []
+        if feedback_file.exists():
+            with open(feedback_file, "r", encoding="utf-8") as f:
+                try:
+                    data = json.load(f)
+                except json.JSONDecodeError:
+                    data = []
+        
+        data.append(feedback_data)
+        
+        with open(feedback_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.error("Could not save feedback to json: %s", e)
+
     return {"status": "ok", "message": "Đã ghi nhận phản hồi", "request_id": body.request_id}
 
 

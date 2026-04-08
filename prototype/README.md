@@ -9,6 +9,7 @@
 ```
 prototype/
 ├── backend/
+│   ├── evals/            # Kịch bản tự động đánh giá chất lượng (run_eval.py)
 │   ├── main.py           # FastAPI app (SSE /chat, /health, /chat/history)
 │   ├── agent.py          # LangGraph StateGraph + 6 Tools + MemorySaver
 │   ├── llm_fallback.py   # LLM fallback chain: Claude → GitHub Models → Gemini
@@ -17,6 +18,7 @@ prototype/
 │   ├── index.html        # Giao diện chatbot (Brutalist + AI-Native)
 │   ├── style.css         # Design system (OLED dark, Space Mono, red accent)
 │   └── app.js            # Logic SSE streaming, COT panel, tool status
+├── logs/                 # Thư mục chứa log ứng dụng (app.log) và dữ liệu feedback (feedback.json)
 ├── .env.example          # Template biến môi trường
 ├── .env                  # ← Tạo file này và điền API keys
 ├── requirements.txt      # Python dependencies
