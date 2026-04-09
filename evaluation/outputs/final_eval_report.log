@@ -1,0 +1,10 @@
+==================================================
+[📊 BÁO CÁO KẾT QUẢ ĐÁNH GIÁ - RISK & EVAL]
+- Số lượng câu hỏi đã chấm: 100
+- Factuality / Accuracy:    97.0%  (Mục tiêu: > 98%)
+- Human Fallback Rate:      17.0%  (Mục tiêu: < 30%)
+- P90 Latency:              7.01 s  (Mục tiêu: < 10s)
+
+[⚖️ QUYẾT ĐỊNH CỦA HỆ THỐNG (KILL CRITERIA)]
+✅ GREEN LIGHT (THÀNH CÔNG): Hệ thống ổn định, đạt ngưỡng an toàn, sẵn sàng đem đi trình diễn Demo!
+==================================================
