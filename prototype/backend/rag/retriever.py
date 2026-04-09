@@ -31,17 +31,20 @@ def _get_stores():
         _embeddings = get_embeddings()
         str_db_path = str(CHROMA_DB_PATH)
         
-        # Chỉ tạo kết nối, không mutate data
+        import chromadb
+        client = chromadb.PersistentClient(path=str_db_path)
+        
+        # Tạo kết nối an toàn qua PersistentClient
         _review_store = Chroma(
+            client=client,
             collection_name=COLLECTION_REVIEWS,
-            embedding_function=_embeddings,
-            persist_directory=str_db_path
+            embedding_function=_embeddings
         )
         
         _policy_store = Chroma(
+            client=client,
             collection_name=COLLECTION_POLICIES,
-            embedding_function=_embeddings,
-            persist_directory=str_db_path
+            embedding_function=_embeddings
         )
         
         logger.info("✅ Load Vector DB thành công cho RAG")

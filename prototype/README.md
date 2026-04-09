@@ -56,6 +56,7 @@ Mở file `.env` và điền ít nhất **một** API key:
 # Ưu tiên OpenRouter → Claude → OpenAI → GitHub Models → Gemini (fallback thứ tự)
 OPENROUTER_API_KEY=sk-or-v1-...    # OpenRouter (hỗ trợ nhiều model free)
 ANTHROPIC_API_KEY=sk-ant-...       # Claude 3.5 Sonnet (Chỉ có mô hình Chat, không có Embeddings)
+VOYAGE_API_KEY=pa-...              # Voyage AI (Bắt cặp tốt nhất với Claude để làm Embeddings)
 OPENAI_API_KEY=sk-proj-...         # OpenAI (GPT-4o-mini & text-embedding-3-small)
 GITHUB_PAT=ghp_...                  # GitHub Models (Hỗ trợ Azure Embeddings)
 GOOGLE_API_KEY=AIza...              # Gemini 1.5 Flash (Hỗ trợ text-embedding-004)
@@ -78,7 +79,7 @@ CACHE_TTL_REVIEW_SECONDS=300
 
 Hệ thống hiện tại tích hợp RAG chuyên nghiệp cho Dữ liệu phi cấu trúc (Reviews, Chính sách) bằng Chroma DB.
 Mô hình Vector Embeddings cũng được cấu hình fallback đa tầng để hỗ trợ mọi thành viên trong đội:
-👉 `GitHub Models` → `OpenAI` → `Gemini` → `HuggingFace (CPU Local miễn phí)`
+👉 `Voyage AI` → `GitHub Models` → `OpenAI` → `Gemini` → `HuggingFace (CPU Local miễn phí)`
 
 Trước khi chạy hệ thống, **BẮT BUỘC** bạn phải chạy lệnh sau để cắt (chunk) và nhúng (embed) data để tạo DB cục bộ trên máy mình (tùy thuộc vào bạn nhập key nào trong .env):
 

@@ -12,6 +12,25 @@ from typing import Optional
 logger = logging.getLogger(__name__)
 
 
+def _try_voyageai() -> Optional[object]:
+    """Thử dùng Voyage AI (Đối tác Embeddings chính thức của Anthropic/Claude)."""
+    api_key = os.getenv("VOYAGE_API_KEY", "")
+    if not api_key:
+        return None
+    try:
+        from langchain_voyageai import VoyageAIEmbeddings
+        embeddings = VoyageAIEmbeddings(
+            voyage_api_key=api_key,
+            model="voyage-3"
+        )
+        embeddings.embed_query("ping")
+        logger.info("✅ Embeddings: Voyage AI (voyage-3) - Native for Claude")
+        return embeddings
+    except Exception as exc:
+        logger.warning(f"❌ Voyage AI Embeddings thất bại: {exc}")
+        return None
+
+
 def _try_github_models() -> Optional[object]:
     """Thử dùng GitHub Models cung cấp text-embedding-3-small miễn phí."""
     github_pat = os.getenv("GITHUB_PAT", "")
@@ -73,7 +92,7 @@ def _try_gemini() -> Optional[object]:
 def _try_local_huggingface() -> Optional[object]:
     """
     Fallback cuối cùng: Chạy Local Embeddings (chạy bằng CPU không cần API key).
-    Cần pip install sentence-transformers
+    Vì thư viện mảng này rất nặng (cài PyTorch ~2GB), ta chỉ 'Optional' import thay vì đưa vào requirements.
     """
     try:
         from langchain_huggingface import HuggingFaceEmbeddings
@@ -81,23 +100,26 @@ def _try_local_huggingface() -> Optional[object]:
         embeddings.embed_query("ping")
         logger.info("✅ Embeddings: Local HuggingFace (all-MiniLM-L6-v2) - Không tốn phí")
         return embeddings
+    except ImportError:
+        logger.debug("Local HuggingFace chưa được cài đặt. Bỏ qua.")
+        return None
     except Exception as exc:
-        logger.debug(f"Không thể load Local Embeddings (có thể thiếu thư viện): {exc}")
+        logger.debug(f"Không thể load Local Embeddings: {exc}")
         return None
 
 
 def get_embeddings():
     """
     Trả về mô hình Embeddings khả dụng đầu tiên.
-    CẢNH BÁO DB: Khi đổi mô hình Embeddings (OpenAI -> Gemini), 
-    Vector Database (Chroma) phải được build lại (chạy builder.py) 
+    CẢNH BÁO DB: Khi đổi mô hình Embeddings, Vector Database (Chroma) phải được build lại (chạy builder.py) 
     vì dimension của các mô hình là khác nhau.
     """
-    embeddings = _try_github_models() or _try_openai() or _try_gemini() or _try_local_huggingface()
+    embeddings = _try_voyageai() or _try_github_models() or _try_openai() or _try_gemini() or _try_local_huggingface()
     if embeddings is None:
         raise RuntimeError(
-            "Không thể khởi tạo mô hình Embeddings nào. "
-            "Vui lòng cấu hình GITHUB_PAT, OPENAI_API_KEY, GOOGLE_API_KEY "
-            "hoặc cài đặt sentence-transformers để chạy Local."
+            "Không thể khởi tạo mô hình Embeddings nào.\n"
+            "► GỢI Ý 1: Cấu hình VOYAGE_API_KEY, GITHUB_PAT, OPENAI_API_KEY, hoặc GOOGLE_API_KEY trong file .env\n"
+            "► GỢI Ý 2: Nếu muốn chạy Free 100% bằng CPU (Local), hãy mở Terminal và cài thêm:\n"
+            "         pip install sentence-transformers langchain-huggingface"
         )
     return embeddings
