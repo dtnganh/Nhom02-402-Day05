@@ -17,6 +17,6 @@ except FileNotFoundError:
 
 CARS: list[dict] = _DATA.get("cars", [])
 REVIEWS: list[dict] = _DATA.get("reviews", [])
-MAINTAINANCE: dict = _DATA.get("maintenance_schedule", {})
+MAINTENANCE: dict = _DATA.get("maintenance_schedule", {})
 CENTERS: list[dict] = _DATA.get("service_centers", [])
 POLICIES: dict = _DATA.get("policies", {})

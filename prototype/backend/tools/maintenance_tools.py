@@ -6,7 +6,7 @@
 import json
 import logging
 from langchain_core.tools import tool
-from data.data_loader import MAINTAINANCE, CENTERS
+from data.data_loader import MAINTENANCE, CENTERS
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ def book_maintenance(model_id: str, service_type: str = "periodic") -> str:
     service_type: 'periodic' (định kỳ), 'repair' (sửa chữa), 'inspection' (kiểm tra)
     """
     logger.info("Tool book_maintenance: model_id=%s, type=%s", model_id, service_type)
-    schedule = MAINTAINANCE.get(model_id.lower(), MAINTAINANCE.get("vf8plus", []))
+    schedule = MAINTENANCE.get(model_id.lower(), MAINTENANCE.get("vf8_plus", []))
     centers_sample = CENTERS[:3]  # Trả về 3 trung tâm đầu
 
     result = {
