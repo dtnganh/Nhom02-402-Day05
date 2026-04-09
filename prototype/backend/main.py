@@ -564,6 +564,28 @@ def _derive_status(confidence: str, tool_statuses: list[str]) -> str:
     return "ok"
 
 
+_MODEL_URL_SLUGS: dict[str, str] = {
+    "vf3": "vf3",
+    "vf5plus": "vf5",
+    "vf5": "vf5",
+    "vf6": "vf6",
+    "vf7": "vf7",
+    "vf8plus": "vf8",
+    "vf8": "vf8",
+    "vf9plus": "vf9",
+    "vf9": "vf9",
+}
+
+
+def _model_page_url(model_id: str) -> str:
+    if not model_id:
+        return "https://shop.vinfastauto.com/vn_vi"
+    slug = _MODEL_URL_SLUGS.get(model_id.lower())
+    if slug:
+        return f"https://shop.vinfastauto.com/vn_vi/dat-coc-xe-{slug}.html"
+    return f"https://shop.vinfastauto.com/vn_vi/dat-coc-xe-{model_id.lower()}.html"
+
+
 def _source_url_from_name(source_name: str) -> str:
     source = (source_name or "").lower()
     if "otofun" in source:
@@ -582,25 +604,22 @@ def _build_citations(tool_outputs: list[dict], intent_tag: str) -> list[dict]:
         payload = item.get("payload", {})
 
         if tool in ("search_cars", "compare_models"):
-            for car in payload.get("cars", [])[:2]:
-                model_id = car.get("id", "")
+            seen_models: set[str] = set()
+            for car in payload.get("cars", []) + payload.get("comparison", []):
+                model_id = (car.get("id", "") or "").lower()
+                if not model_id or model_id in seen_models:
+                    continue
+                seen_models.add(model_id)
                 name = car.get("name", "VinFast")
+                url = _model_page_url(model_id)
+                label = f"{name} - Thông số chính thức"
+                score = 0.95 if tool == "search_cars" else 0.93
                 candidates.append({
-                    "label": f"{name} - Thông số chính thức",
-                    "url": f"https://vinfast.vn/{model_id}" if model_id else "https://vinfast.vn",
-                    "domain": "vinfast.vn",
+                    "label": label,
+                    "url": url,
+                    "domain": "shop.vinfastauto.com",
                     "source_type": "official",
-                    "score": 0.95,
-                })
-            for car in payload.get("comparison", [])[:2]:
-                model_id = car.get("id", "")
-                name = car.get("name", "VinFast")
-                candidates.append({
-                    "label": f"{name} - So sánh thông số",
-                    "url": f"https://vinfast.vn/{model_id}" if model_id else "https://vinfast.vn",
-                    "domain": "vinfast.vn",
-                    "source_type": "official",
-                    "score": 0.93,
+                    "score": score,
                 })
 
         if tool == "get_battery_policy":
@@ -821,8 +840,8 @@ async def _mock_stream(message: str, thread_id: str, request_id: str) -> AsyncGe
 
     mock_citations = {
         "compare": [
-            {"label": "VF8 Plus - Thông số", "url": "https://vinfast.vn/vf8", "domain": "vinfast.vn", "score": 0.95},
-            {"label": "VF9 Plus - Thông số", "url": "https://vinfast.vn/vf9", "domain": "vinfast.vn", "score": 0.94},
+            {"label": "VF8 - Thông số", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html", "domain": "shop.vinfastauto.com", "score": 0.95},
+            {"label": "VF9 - Thông số", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf9.html", "domain": "shop.vinfastauto.com", "score": 0.94},
         ],
         "battery": [
             {"label": "Chính sách pin VinFast", "url": "https://vinfast.vn/chinh-sach-pin", "domain": "vinfast.vn", "score": 0.98},
@@ -831,7 +850,7 @@ async def _mock_stream(message: str, thread_id: str, request_id: str) -> AsyncGe
         "review": [
             {"label": "Otofun - Review VF8", "url": "https://www.otofun.net", "domain": "otofun.net", "score": 0.72},
             {"label": "VinFast Community", "url": "https://www.facebook.com/groups/vinfast", "domain": "facebook.com", "score": 0.70},
-            {"label": "Thông tin chính thức VF8", "url": "https://vinfast.vn/vf8", "domain": "vinfast.vn", "score": 0.90},
+            {"label": "Thông tin chính thức VF8", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html", "domain": "shop.vinfastauto.com", "score": 0.90},
         ],
         "maintenance": [
             {"label": "Đặt lịch dịch vụ", "url": "https://vinfast.vn/dat-lich-dich-vu", "domain": "vinfast.vn", "score": 0.96},
