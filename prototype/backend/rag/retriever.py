@@ -65,11 +65,20 @@ def search_reviews(model_id: str, query: str = "", max_results: int = 5) -> List
     
     # Pre-filtering: Phải đúng dòng xe (Hỗ trợ biến thể như plus, eco)
     search_kwargs = {"k": max_results}
-    if model_id:
-        model_base = model_id.lower().replace("plus", "").replace("eco", "").strip()
+    
+    # Bỏ qua filter nếu LLM truyền rỗng hoặc truyền chung chung "vf" / "vinfast"
+    if model_id and model_id.lower() not in ["", "vf", "vinfast"]:
+        # Chuẩn hóa (lọc bỏ các hậu tố và dấu gạch)
+        clean_id = model_id.lower().replace("_", "").replace("plus", "").replace("eco", "").replace("lux", "").strip()
+        
         search_kwargs["filter"] = {
             "car_model": {
-                "$in": [model_base, f"{model_base}plus", f"{model_base}eco"]
+                "$in": [
+                    clean_id, 
+                    f"{clean_id}plus", f"{clean_id}_plus", 
+                    f"{clean_id}eco", f"{clean_id}_eco",
+                    f"{clean_id}lux", f"{clean_id}_lux"
+                ]
             }
         }
 

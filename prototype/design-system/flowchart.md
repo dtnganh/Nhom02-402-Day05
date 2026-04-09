@@ -12,7 +12,7 @@ flowchart TD
     %% 1. USER INPUT & API GATEWAY
     %% --------------------------------------------------------
     User((User)) -->|Gõ câu hỏi trên Giao diện| Frontend[Frontend Javascript]
-    Frontend -->|POST /chat (SSE)| FastAPI[FastAPI Backend - main.py]
+    Frontend -->|POST /chat SSE| FastAPI[FastAPI Backend - main.py]
 
     FastAPI --> IntentInfer[Phân loại Intent Tag & Tính Cache Key]
     
@@ -25,7 +25,7 @@ flowchart TD
     CheckCache -->|No| SubgraphGraph
 
     %% --------------------------------------------------------
-    %% 3. HỆ THỐNG LANGGRAPH AGENT (agent.py)
+    %% 3. HỆ THỐNG LANGGRAPH AGENT
     %% --------------------------------------------------------
     subgraph SubgraphGraph [Luồng LangGraph & Agentic Workflow]
         direction TB
@@ -51,14 +51,14 @@ flowchart TD
         
         %% Tool Execution
         HasTools -->|Có| ToolRouting{Router Định tuyến Tool}
-        ToolRouting --> |So sánh/Tìm xe| CarTools[search_cars / compare]:::toolNode
-        ToolRouting --> |Bảo dưỡng| MaintTools[book_maintenance]:::toolNode
-        ToolRouting --> |Chính sách/Sạc| PolicyTools[get_battery_policy / charging]:::toolNode
-        ToolRouting --> |Trải nghiệm/Đánh giá| RAGTool[get_reviews / RAG Retriever]:::toolNode
+        ToolRouting --> CarTools[search_cars / compare]:::toolNode
+        ToolRouting --> MaintTools[book_maintenance]:::toolNode
+        ToolRouting --> PolicyTools[get_battery_policy / charging]:::toolNode
+        ToolRouting --> RAGTool[get_reviews / RAG Retriever]:::toolNode
 
         %% RAG Subgraph
         RAGTool --> VectorDB[(ChromaDB Vector Store)]:::database
-        VectorDB -->|Không tìm thấy| RAGEmpty[Low Confidence: Trả về []]:::edgeCase
+        VectorDB -->|Không tìm thấy| RAGEmpty["Low Confidence: Trả về []"]:::edgeCase
         VectorDB -->|Error kết nối DB| RAGError[Status: Error]:::edgeCase
         VectorDB -->|Thành công| RAGSuccess[Tóm tắt Sentiment + Reviews]:::toolNode
 
@@ -67,18 +67,18 @@ flowchart TD
     end
 
     %% --------------------------------------------------------
-    %% 4. XỬ LÝ HẬU KỲ & SSE OUTPUT (main.py)
+    %% 4. XỬ LÝ HẬU KỲ & SSE OUTPUT
     %% --------------------------------------------------------
     StopGen --> Guardrails[Guardrails & Confidence Checking]
     
     Guardrails --> CalcConfidence{Tính Điểm Tin Cậy}
-    CalcConfidence --> |High / Mid| FinalAnswer[Lưu Answer vào Cache]:::cacheNode
-    CalcConfidence --> |Low / Error Tool| FallbackWarning[Cảnh báo không đủ thông tin / Đề nghị gặp tư vấn viên]:::edgeCase
+    CalcConfidence --> FinalAnswer[Lưu Answer vào Cache]:::cacheNode
+    CalcConfidence --> FallbackWarning[Cảnh báo không đủ thông tin / Đề nghị gặp tư vấn viên]:::edgeCase
 
     FinalAnswer --> GenerateCitations[Trích xuất Nguồn & Citations]
     FallbackWarning --> GenerateCitations
 
-    GenerateCitations --> OutputSSE(Stream từng token đến Frontend)
+    GenerateCitations --> OutputSSE("Stream từng token đến Frontend")
     OutputSSE --> Frontend
 
     %% Styling Elements

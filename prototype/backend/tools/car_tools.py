@@ -20,19 +20,22 @@ def search_cars(query: str, model_id: str = "") -> str:
     results = []
     q_lower = query.lower()
 
-    for car in CARS:
-        # Khớp theo model_id nếu được chỉ định
-        if model_id and car["id"] != model_id.lower():
-            continue
-        # Khớp theo tên trong query
-        car_name_lower = car["name"].lower()
-        matches = (
-            not model_id
-            and any(kw in q_lower for kw in [car["id"], car["name"].lower().split()[-1].lower()])
-        ) or (model_id and car["id"] == model_id.lower()) or (not model_id and not model_id)
-
-        if matches:
-            results.append(car)
+    if not model_id and not q_lower:
+        results = CARS
+    else:
+        for car in CARS:
+            if model_id:
+                if model_id.lower() in car["id"].lower():
+                    results.append(car)
+            else:
+                # Nếu LLM truyền query="vf9", tìm các xe có id="vf9..."
+                car_base = car["id"].split("_")[0]
+                if car_base in q_lower or car["id"].lower() in q_lower or car["name"].lower() in q_lower:
+                    results.append(car)
+        
+        # Fallback: Nếu câu hỏi chung chung (không chứa tên xe), trả về hết
+        if not model_id and not results:
+            results = CARS
 
     if not results:
         return json.dumps({"status": "not_found", "message": "Không tìm thấy xe phù hợp."}, ensure_ascii=False)

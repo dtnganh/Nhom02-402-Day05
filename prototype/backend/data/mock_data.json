@@ -4,27 +4,38 @@
       "id": "vf3",
       "name": "VinFast VF3",
       "segment": "Mini SUV",
-      "year": 2024,
+      "year": 2026,
       "status": "available",
-      "price_buy_battery": 235000000,
-      "price_without_battery": 185000000,
-      "battery_rental_monthly": 700000,
-      "battery_kwh": 23.2,
-      "range_km_wltp": 215,
-      "power_kw": 42,
-      "acceleration_0_100": 12.0,
+      "price_buy_battery": 315000000,
+      "price_without_battery": 240000000,
+      "battery_rental_monthly": 900000,
+      "battery_kwh": 18.64,
+      "range_km_nedc": 210,
+      "power_kw": 32,
+      "acceleration_0_50": 5.0,
       "seats": 4,
-      "color_options": ["Trắng Ngọc Trai", "Đen Huyền Bí", "Xanh Đại Dương", "Bạc Ánh Kim"],
-      "warranty_years": 5,
-      "warranty_km": 100000,
+      "color_options": [
+        "Vàng",
+        "Xanh lá",
+        "Hồng",
+        "Trắng",
+        "Đen"
+      ],
+      "warranty_years": 7,
+      "warranty_km": 160000,
       "battery_warranty_years": 8,
-      "features": ["Cảm biến lùi", "Camera lùi", "Màn hình 10 inch", "Apple CarPlay"],
-      "notes": "Mẫu xe mini SUV giá rẻ nhất, phù hợp đô thị. Review thực tế pin ~180km."
+      "features": [
+        "Màn hình 10 inch",
+        "Kết nối Wifi/Bluetooth",
+        "Phanh tay điện tử",
+        "Lazang 16 inch"
+      ],
+      "notes": "Xe đô thị quốc dân. Review thực tế: Di chuyển phố cực linh hoạt, pin thực tế khoảng 160-170km nếu bật điều hòa mạnh."
     },
     {
       "id": "vf5plus",
       "name": "VinFast VF5 Plus",
-      "segment": "B-SUV",
+      "segment": "A-SUV",
       "year": 2024,
       "status": "available",
       "price_buy_battery": 458000000,
@@ -32,93 +43,325 @@
       "battery_rental_monthly": 1190000,
       "battery_kwh": 37.4,
       "range_km_wltp": 326,
-      "power_kw": 130,
+      "power_kw": 100,
       "acceleration_0_100": 8.3,
       "seats": 5,
-      "color_options": ["Trắng Tinh Khôi", "Đen Huyền Bí", "Đỏ Ngọn Lửa", "Xanh Biển"],
-      "warranty_years": 5,
-      "warranty_km": 100000,
+      "color_options": [
+        "Trắng Tinh Khôi",
+        "Đen Huyền Bí",
+        "Đỏ Ngọn Lửa",
+        "Xanh Biển"
+      ],
+      "warranty_years": 7,
+      "warranty_km": 160000,
       "battery_warranty_years": 8,
-      "features": ["Cruise control", "6 túi khí", "Phanh ABS/EBD", "Màn hình 10 inch"],
+      "features": [
+        "Cruise control",
+        "6 túi khí",
+        "Phanh ABS/EBD",
+        "Màn hình 10 inch"
+      ],
       "notes": "Phù hợp gia đình nhỏ đô thị. Review thực tế pin ~260-280km ở tốc độ bình thường."
     },
     {
-      "id": "vf6",
-      "name": "VinFast VF6",
-      "segment": "B-SUV Premium",
+      "id": "vfe34",
+      "name": "VinFast VF e34",
+      "segment": "C-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 830000000,
+      "price_without_battery": 710000000,
+      "battery_rental_monthly": 1450000,
+      "battery_kwh": 41.9,
+      "range_km_nedc": 318,
+      "power_kw": 110,
+      "seats": 5,
+      "color_options": [
+        "Trắng",
+        "Đen",
+        "Bạc",
+        "Đỏ",
+        "Xanh Rêu"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": [
+        "Trợ lý ảo ViVi",
+        "Cảnh báo chệch làn",
+        "Cảnh báo điểm mù"
+      ],
+      "notes": "Mẫu xe điện tiên phong của VinFast, tối ưu cho nhu cầu chạy dịch vụ và gia đình cơ bản."
+    },
+    {
+      "id": "vf6_eco",
+      "name": "VinFast VF6 Eco",
+      "segment": "B-SUV",
       "year": 2024,
       "status": "available",
       "price_buy_battery": 765000000,
-      "price_without_battery": 634000000,
+      "price_without_battery": 675000000,
       "battery_rental_monthly": 1390000,
-      "battery_rental_km_limit": 3000,
-      "battery_rental_extra_per_km": 960,
+      "battery_kwh": 59.6,
+      "range_km_wltp": 399,
+      "power_kw": 100,
+      "acceleration_0_100": 8.5,
+      "seats": 5,
+      "color_options": [
+        "Trắng Ngọc Trai",
+        "Đen Huyền Bí",
+        "Xanh Pastel",
+        "Vàng Cát"
+      ],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 10,
+      "features": [
+        "Màn hình 12.9 inch",
+        "Nội thất nỉ pha da",
+        "Phanh tay điện tử"
+      ],
+      "notes": "Bản tiêu chuẩn, tiết kiệm chi phí, tầm hoạt động lý thuyết cao hơn bản Plus."
+    },
+    {
+      "id": "vf6_plus",
+      "name": "VinFast VF6 Plus",
+      "segment": "B-SUV Premium",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 855000000,
+      "price_without_battery": 765000000,
+      "battery_rental_monthly": 1390000,
       "battery_kwh": 59.6,
       "range_km_wltp": 381,
       "power_kw": 150,
       "acceleration_0_100": 7.0,
       "seats": 5,
-      "color_options": ["Trắng Ngọc Trai", "Đen Huyền Bí", "Xanh Pastel", "Vàng Cát"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "color_options": [
+        "Trắng Ngọc Trai",
+        "Đen Huyền Bí",
+        "Xanh Pastel",
+        "Vàng Cát"
+      ],
+      "warranty_years": 7,
+      "warranty_km": 160000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2", "Phanh tự động khẩn cấp", "Giữ làn", "Màn hình 12.9 inch", "Đèn LED Matrix"],
-      "notes": "Giảm tiếng ồn tốt, nội thất cao cấp hơn VF5 nhiều. Pin thực tế ~320-340km."
+      "features": [
+        "ADAS Level 2",
+        "Phanh tự động khẩn cấp",
+        "Giữ làn",
+        "Đèn LED Matrix",
+        "Ghế da cao cấp"
+      ],
+      "notes": "Giảm tiếng ồn tốt, nội thất cao cấp. Pin thực tế ~320-340km."
     },
     {
-      "id": "vf7",
-      "name": "VinFast VF7",
+      "id": "vf7_eco",
+      "name": "VinFast VF7 Eco",
+      "segment": "C-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 999000000,
+      "price_without_battery": 850000000,
+      "battery_rental_monthly": 1600000,
+      "battery_kwh": 59.6,
+      "range_km_wltp": 375,
+      "power_kw": 130,
+      "acceleration_0_100": 8.1,
+      "seats": 5,
+      "color_options": [
+        "Đen Huyền Bí",
+        "Trắng Ánh Bạc",
+        "Đỏ Ruby",
+        "Xanh Midnight"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": [
+        "Màn hình 12.9 inch",
+        "Nội thất cơ bản",
+        "Hệ thống hỗ trợ người lái cơ bản"
+      ],
+      "notes": "Thiết kế tương tự bản Plus nhưng dùng động cơ điện đơn, phù hợp chạy phố."
+    },
+    {
+      "id": "vf7_plus",
+      "name": "VinFast VF7 Plus",
       "segment": "C-SUV Coupe",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 850000000,
-      "price_without_battery": 730000000,
+      "price_buy_battery": 1199000000,
+      "price_without_battery": 999000000,
       "battery_rental_monthly": 1600000,
       "battery_kwh": 75.3,
       "range_km_wltp": 431,
       "power_kw": 260,
       "acceleration_0_100": 5.9,
       "seats": 5,
-      "color_options": ["Đen Huyền Bí", "Trắng Ánh Bạc", "Đỏ Ruby", "Xanh Midnight"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "color_options": [
+        "Đen Huyền Bí",
+        "Trắng Ánh Bạc",
+        "Đỏ Ruby",
+        "Xanh Midnight"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2+", "HUD kính lái", "Đèn LED Matrix", "Âm ly Harman", "Pano roof"],
-      "notes": "Thiết kế Coupe thể thao nhất phân khúc. Pin thực tế ~370km đường bình thường."
+      "features": [
+        "ADAS Level 2+",
+        "HUD kính lái",
+        "Đèn LED Matrix",
+        "Âm ly Harman",
+        "Pano roof"
+      ],
+      "notes": "Bản đầy đủ sức mạnh với động cơ kép. Pin thực tế ~370km đường bình thường."
     },
     {
-      "id": "vf8plus",
-      "name": "VinFast VF8 Plus",
+      "id": "vf7_dragon",
+      "name": "VinFast VF7 Dragon Forged",
+      "segment": "C-SUV Special Edition",
+      "year": 2024,
+      "status": "limited",
+      "price_buy_battery": 1205800000,
+      "price_without_battery": 1005800000,
+      "battery_kwh": 75.3,
+      "range_km_wltp": 431,
+      "power_kw": 260,
+      "acceleration_0_100": 5.8,
+      "features": [
+        "Hỏa Long Độc Bản",
+        "Logo rồng vàng",
+        "Mâm xe mạ vàng",
+        "ADAS Level 2+"
+      ],
+      "notes": "Phiên bản giới hạn 68 xe. Review: Cực kỳ bốc, ngoại hình thu hút mọi ánh nhìn nhưng mâm vàng cần giữ gìn kỹ."
+    },
+    {
+      "id": "vf8_eco",
+      "name": "VinFast VF8 Eco",
       "segment": "D-SUV",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 1057000000,
-      "price_without_battery": 812000000,
+      "price_buy_battery": 1290000000,
+      "price_without_battery": 1090000000,
+      "battery_rental_monthly": 1900000,
+      "battery_kwh": 82.0,
+      "range_km_wltp": 471,
+      "power_kw": 260,
+      "power_hp": 349,
+      "acceleration_0_100": 6.5,
+      "seats": 5,
+      "color_options": [
+        "Đen Huyền Bí",
+        "Trắng Ngọc Trai",
+        "Bạc",
+        "Đỏ"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": [
+        "ADAS Level 2+",
+        "Màn hình 15.6 inch",
+        "Âm thanh 8 loa",
+        "Nội thất giả da"
+      ],
+      "notes": "Phạm vi hoạt động dài hơn bản Plus nhờ động cơ nhỏ hơn một chút và không dùng mâm lớn."
+    },
+    {
+      "id": "vf8_plus",
+      "name": "VinFast VF8 Plus",
+      "segment": "D-SUV Premium",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 1470000000,
+      "price_without_battery": 1270000000,
       "battery_rental_monthly": 1900000,
       "battery_kwh": 82.0,
       "range_km_wltp": 420,
       "power_kw": 300,
       "power_hp": 402,
-      "acceleration_0_100": 5.9,
-      "seats": 7,
-      "color_options": ["Đen Huyền Bí", "Trắng Ngọc Trai", "Xanh Biễn Sâu", "Đỏ Anh Đào"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "acceleration_0_100": 5.5,
+      "seats": 5,
+      "color_options": [
+        "Đen Huyền Bí",
+        "Trắng Ngọc Trai",
+        "Xanh Biễn Sâu",
+        "Đỏ Anh Đào"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2+", "Màn hình 15.6 inch", "Âm ly 12 loa", "Pano roof", "Ghế massage", "OTA over-the-air"],
-      "notes": "Dòng flagship D-SUV. Pin thực tế ~340km. Tiếng gió nhẹ ở tốc độ >100km/h theo review cộng đồng."
+      "features": [
+        "ADAS Level 2+",
+        "Màn hình 15.6 inch",
+        "Âm ly 12 loa",
+        "Pano roof",
+        "Ghế massage",
+        "Nội thất da thật"
+      ],
+      "notes": "Dòng flagship D-SUV. Tăng tốc ấn tượng. Tiếng gió nhẹ ở tốc độ >100km/h."
     },
     {
-      "id": "vf9plus",
+      "id": "vf8_lux",
+      "name": "VinFast VF8 Lux",
+      "segment": "D-SUV Luxury",
+      "year": 2025,
+      "status": "available",
+      "price_buy_battery": 1569000000,
+      "price_without_battery": 1369000000,
+      "battery_kwh": 87.7,
+      "range_km_wltp": 471,
+      "power_kw": 300,
+      "seats": 5,
+      "features": [
+        "Màu sơn 2 tone",
+        "Trợ lý ảo AI tạo sinh",
+        "Nội thất da cao cấp",
+        "Hệ thống treo thích ứng"
+      ],
+      "notes": "Bản nâng cấp 2025. Khắc phục triệt để tiếng gió ở tốc độ cao, phần mềm mượt mà, cách âm xuất sắc."
+    },
+    {
+      "id": "vf9_eco",
+      "name": "VinFast VF9 Eco",
+      "segment": "E-SUV 3 hàng ghế",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 1984000000,
+      "price_without_battery": 1491000000,
+      "battery_rental_monthly": 2800000,
+      "battery_kwh": 123.0,
+      "range_km_wltp": 626,
+      "power_kw": 300,
+      "power_hp": 402,
+      "acceleration_0_100": 6.5,
+      "seats": 7,
+      "color_options": [
+        "Đen Huyền Bí",
+        "Trắng Bạch Tuyết",
+        "Xám"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": [
+        "ADAS Level 2+",
+        "Màn hình 15.6 inch",
+        "Âm thanh 13 loa",
+        "3 hàng ghế 7 chỗ rộng rãi"
+      ],
+      "notes": "Tầm hoạt động xa nhất của gia đình VF nhờ mâm xe nhỏ hơn. Thực dụng cho gia đình đông người."
+    },
+    {
+      "id": "vf9_plus",
       "name": "VinFast VF9 Plus",
       "segment": "E-SUV 3 hàng ghế",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 1570000000,
-      "price_without_battery": 1267000000,
+      "price_buy_battery": 2169000000,
+      "price_without_battery": 1676000000,
       "battery_rental_monthly": 2800000,
       "battery_kwh": 123.0,
       "range_km_wltp": 594,
@@ -126,18 +369,40 @@
       "power_hp": 402,
       "acceleration_0_100": 6.5,
       "seats": 7,
-      "color_options": ["Đen Huyền Bí", "Trắng Bạch Tuyết", "Vàng Kim"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "color_options": [
+        "Đen Huyền Bí",
+        "Trắng Bạch Tuyết",
+        "Vàng Kim"
+      ],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2+", "Màn hình 15.6 inch", "Âm ly 15 loa premium", "Pano roof toàn cảnh", "Ghế captain", "3 hàng ghế 7 chỗ rộng rãi"],
-      "notes": "SUV 3 hàng ghế lớn nhất của VinFast. Phạm vi tốt nhất. Pin thực tế ~500km."
+      "features": [
+        "ADAS Level 2+",
+        "Màn hình 15.6 inch",
+        "Âm ly 15 loa premium",
+        "Pano roof toàn cảnh",
+        "Ghế cơ trưởng (tuỳ chọn 6 chỗ)"
+      ],
+      "notes": "Mẫu SUV Full-size cao cấp nhất. Cực kỳ rộng rãi, cách âm tương đương các dòng xe hạng sang."
+    },
+    {
+      "id": "vf_wild",
+      "name": "VinFast VF Wild",
+      "segment": "Pickup",
+      "year": 2026,
+      "status": "upcoming",
+      "estimated_price": 1000000000,
+      "features": [
+        "Kính chắn gió toàn cảnh",
+        "Cửa lùa khoang cabin kéo dài thùng",
+        "Gương chiếu hậu điện tử"
+      ],
+      "notes": "Dự kiến ra mắt thương mại cuối 2026. Có thể có thêm bản EREV (xe điện tăng tầm hành trình)."
     }
   ],
-
   "maintenance_schedule": {
-    "vf8plus": [
+    "vf8_plus": [
       {
         "interval_km": 10000,
         "interval_months": 6,
@@ -155,7 +420,7 @@
         ],
         "estimated_duration_hours": 2.5,
         "cost_in_warranty": 0,
-        "cost_after_warranty_vnd": 1500000
+        "cost_after_warranty_vnd": 600000
       },
       {
         "interval_km": 30000,
@@ -174,92 +439,219 @@
       }
     ]
   },
-
   "service_centers": [
-    { "id": "sc_hcm1", "name": "VinFast Showroom Nguyễn Văn Linh", "city": "TP.HCM", "address": "Đại lộ Nguyễn Văn Linh, Q7, TP.HCM", "phone": "1900 23 23 89", "hours": "08:00-18:00 (Th2-CN)", "lat": 10.7280, "lng": 106.7110 },
-    { "id": "sc_hcm2", "name": "VinFast Service Center Bình Dương", "city": "Bình Dương", "address": "QL13, TP. Thủ Dầu Một, Bình Dương", "phone": "1900 23 23 89", "hours": "07:30-17:30 (Th2-T7)", "lat": 10.9798, "lng": 106.6523 },
-    { "id": "sc_hn1", "name": "VinFast Showroom Mỹ Đình", "city": "Hà Nội", "address": "Khu đô thị Mỹ Đình, Nam Từ Liêm, Hà Nội", "phone": "1900 23 23 89", "hours": "08:00-18:00 (Th2-CN)", "lat": 21.0285, "lng": 105.7749 },
-    { "id": "sc_dn1", "name": "VinFast Đà Nẵng", "city": "Đà Nẵng", "address": "Đường Trần Phú, Q.Hải Châu, Đà Nẵng", "phone": "1900 23 23 89", "hours": "08:00-17:30 (Th2-T7)", "lat": 16.0678, "lng": 108.2208 }
+    {
+      "id": "sc_hcm1",
+      "name": "VinFast Showroom Nguyễn Văn Linh",
+      "city": "TP.HCM",
+      "address": "Đại lộ Nguyễn Văn Linh, Q7, TP.HCM",
+      "phone": "1900 23 23 89",
+      "hours": "08:00-18:00 (Th2-CN)",
+      "lat": 10.7280,
+      "lng": 106.7110
+    },
+    {
+      "id": "sc_hcm2",
+      "name": "VinFast Service Center Bình Dương",
+      "city": "Bình Dương",
+      "address": "QL13, TP. Thủ Dầu Một, Bình Dương",
+      "phone": "1900 23 23 89",
+      "hours": "07:30-17:30 (Th2-T7)",
+      "lat": 10.9798,
+      "lng": 106.6523
+    },
+    {
+      "id": "sc_hn1",
+      "name": "VinFast Showroom Mỹ Đình",
+      "city": "Hà Nội",
+      "address": "Khu đô thị Mỹ Đình, Nam Từ Liêm, Hà Nội",
+      "phone": "1900 23 23 89",
+      "hours": "08:00-18:00 (Th2-CN)",
+      "lat": 21.0285,
+      "lng": 105.7749
+    },
+    {
+      "id": "sc_dn1",
+      "name": "VinFast Đà Nẵng",
+      "city": "Đà Nẵng",
+      "address": "Đường Trần Phú, Q.Hải Châu, Đà Nẵng",
+      "phone": "1900 23 23 89",
+      "hours": "08:00-17:30 (Th2-T7)",
+      "lat": 16.0678,
+      "lng": 108.2208
+    }
   ],
-
   "reviews": [
     {
       "id": "r001",
-      "car_model": "vf8plus",
+      "car_model": "vf8_plus",
       "source": "Otofun",
       "date": "2024-03-15",
       "sentiment": "positive",
       "rating": 4,
       "summary": "Nội thất sang trọng, lái rất êm và nhanh. Pin thực tế khoảng 340km đường bình thường.",
-      "pros": ["Cabin rộng rãi, ghế thoải mái", "Tăng tốc mạnh", "Màn hình lớn, đẹp"],
-      "cons": ["Tiếng gió nhẹ ở >100km/h", "App VinFast đôi khi chậm", "Trạm sạc ngoài tỉnh còn ít"]
+      "pros": [
+        "Cabin rộng rãi, ghế thoải mái",
+        "Tăng tốc mạnh",
+        "Màn hình lớn, đẹp"
+      ],
+      "cons": [
+        "Tiếng gió nhẹ ở >100km/h",
+        "App VinFast đôi khi chậm",
+        "Trạm sạc ngoài tỉnh còn ít"
+      ]
     },
     {
       "id": "r002",
-      "car_model": "vf8plus",
+      "car_model": "vf8_plus",
       "source": "VinFast Global Community",
       "date": "2024-03-28",
       "sentiment": "positive",
       "rating": 5,
       "summary": "Sau 6 tháng dùng VF8 rất hài lòng. OTA update liên tục cải thiện.",
-      "pros": ["OTA cải thiện liên tục", "Bảo dưỡng nhanh, giá rẻ", "Hệ thống ADAS hiệu quả"],
-      "cons": ["Kích thước khó đỗ ở trung tâm thành phố"]
+      "pros": [
+        "OTA cải thiện liên tục",
+        "Bảo dưỡng nhanh, giá rẻ",
+        "Hệ thống ADAS hiệu quả"
+      ],
+      "cons": [
+        "Kích thước khó đỗ ở trung tâm thành phố"
+      ]
     },
     {
       "id": "r003",
-      "car_model": "vf8plus",
+      "car_model": "vf8_plus",
       "source": "Otofun",
       "date": "2024-02-10",
       "sentiment": "mixed",
       "rating": 3,
       "summary": "Xe đẹp nhưng pin thực tế thấp hơn công bố nhiều. Cần cải thiện mạng sạc.",
-      "pros": ["Thiết kế đẹp", "Ghế mát-xa tốt"],
-      "cons": ["Pin thực tế ~310km", "Mạng sạc DC nhanh ít ở tỉnh thành nhỏ"]
+      "pros": [
+        "Thiết kế đẹp",
+        "Ghế mát-xa tốt"
+      ],
+      "cons": [
+        "Pin thực tế ~310km",
+        "Mạng sạc DC nhanh ít ở tỉnh thành nhỏ"
+      ]
     },
     {
       "id": "r004",
-      "car_model": "vf6",
+      "car_model": "vf6_plus",
       "source": "Otofun",
       "date": "2024-04-01",
       "sentiment": "positive",
       "rating": 4,
       "summary": "VF6 đáng tiền nhất trong tầm giá. Lái đô thị cực êm, cách âm tốt hơn kỳ vọng.",
-      "pros": ["Cách âm tốt", "ADAS hoạt động ổn", "Tiết kiệm chi phí vận hành"],
-      "cons": ["Hàng ghế sau hơi thấp với người cao >1m75", "App đôi khi mất kết nối"]
+      "pros": [
+        "Cách âm tốt",
+        "ADAS hoạt động ổn",
+        "Tiết kiệm chi phí vận hành"
+      ],
+      "cons": [
+        "Hàng ghế sau hơi thấp với người cao >1m75",
+        "App đôi khi mất kết nối"
+      ]
     },
     {
       "id": "r005",
-      "car_model": "vf9plus",
+      "car_model": "vf9_plus",
       "source": "VinFast Global Community",
       "date": "2024-03-20",
       "sentiment": "positive",
       "rating": 5,
       "summary": "VF9 xứng đáng là flagship của VinFast. Phạm vi pin trên 500km thực tế.",
-      "pros": ["Pin thực tế ~510km", "Hàng ghế 3 rộng rãi", "Cách âm hoàn hảo"],
-      "cons": ["Giá cao", "Bãi đỗ xe cần không gian lớn"]
+      "pros": [
+        "Pin thực tế ~510km",
+        "Hàng ghế 3 rộng rãi",
+        "Cách âm hoàn hảo"
+      ],
+      "cons": [
+        "Giá cao",
+        "Bãi đỗ xe cần không gian lớn"
+      ]
+    },
+    {
+      "id": "r006",
+      "car_model": "vf3",
+      "source": "VozForums",
+      "date": "2026-01-10",
+      "sentiment": "positive",
+      "rating": 4.5,
+      "summary": "Xe nhỏ nhưng ngồi 4 người lớn vẫn ổn. Đi phố không sợ tắc đường.",
+      "pros": [
+        "Dễ đỗ xe",
+        "Chi phí sạc cực rẻ (~200k/tháng)",
+        "Ngoại hình cá tính"
+      ],
+      "cons": [
+        "Gương chỉnh cơ",
+        "Không có sạc nhanh DC tốc độ cao (chỉ nhận tối đa ~30kW)"
+      ]
+    },
+    {
+      "id": "r007",
+      "car_model": "vf7_plus",
+      "source": "Tinhte",
+      "date": "2025-11-20",
+      "sentiment": "positive",
+      "rating": 4.8,
+      "summary": "Cảm giác lái hay nhất trong các dòng xe VinFast. Thiết kế như xe concept.",
+      "pros": [
+        "Tăng tốc dính lưng",
+        "Hệ thống treo chắc chắn",
+        "Đèn LED cực đẹp"
+      ],
+      "cons": [
+        "Hàng ghế sau hơi bí do thiết kế coupe",
+        "Màn hình trung tâm đôi khi hơi nóng"
+      ]
     }
   ],
-
   "policies": {
     "battery_rental_gsm": {
       "name": "Giải pháp Pin GSM (Giải Pháp Sở Hữu Mở)",
       "contract_min_months": 12,
-      "models_supported": ["vf6", "vf7", "vf8plus", "vf9plus"],
-      "included_services": ["Thay thế pin miễn phí nếu xuống dưới 70% dung lượng", "Bảo hành pin 10 năm/200.000km", "Hỗ trợ nâng cấp pin công nghệ mới"],
+      "models_supported": [
+        "vfe34",
+        "vf6_eco",
+        "vf6_plus",
+        "vf7_eco",
+        "vf7_plus",
+        "vf8_eco",
+        "vf8_plus",
+        "vf8_lux",
+        "vf9_eco",
+        "vf9_plus"
+      ],
+      "included_services": [
+        "Thay thế pin miễn phí nếu xuống dưới 70% dung lượng",
+        "Bảo hành pin 10 năm/200.000km",
+        "Hỗ trợ nâng cấp pin công nghệ mới"
+      ],
       "important_notes": "Chính sách giá pin GSM có thể điều chỉnh theo thông báo 30 ngày trước. Luôn kiểm tra website chính thức trước khi ký hợp đồng."
     },
     "warranty": {
-      "vehicle_warranty": "5 năm hoặc 150.000 km (tuỳ điều kiện nào đến trước)",
+      "vehicle_warranty": "7 năm hoặc 160.000 km đến 10 năm hoặc 200.000 km (tùy dòng xe)",
       "battery_warranty": "10 năm hoặc 200.000 km với xe dùng pin GSM",
       "free_maintenance_period": "5 năm đầu theo lịch bảo dưỡng định kỳ chính thức",
-      "roadside_assistance": "24/7 trong 5 năm đầu tiên"
+      "roadside_assistance": "24/7 trong suốt thời gian bảo hành"
     },
     "charging": {
       "home_charging_speed": "11 kW AC (đầy pin VF8 ~7 giờ)",
-      "fast_charging_dc": "Tối đa 150 kW DC (VF8: 0→80% khoảng 32 phút)",
-      "vinfast_charging_network_stations": 150,
+      "fast_charging_dc": "Tối đa 150 kW - 250 kW DC (tùy dòng xe)",
+      "vinfast_charging_network_stations": "Hơn 150.000 cổng sạc",
       "vinfast_charging_network_provinces": 63,
       "charging_app": "Ứng dụng VinFast App - kiểm tra trạm, đặt lịch sạc"
+    },
+    "battery_rental_2026": {
+      "vf3": "Gói 900.000 VNĐ/tháng (không giới hạn km)",
+      "vf5_vfe34_vf6": "Gói 1.200.000 VNĐ - 1.600.000 VNĐ tùy quãng đường",
+      "vf7_vf8_vf9": "Gói từ 1.600.000 VNĐ đến hơn 3.000.000 VNĐ/tháng cho di chuyển nhiều"
+    },
+    "v-green_charging": {
+      "status": "Phủ khắp 63 tỉnh thành, tiếp tục mở rộng nhượng quyền",
+      "new_feature": "Tự động nhận diện xe và trừ tiền qua app (Plug & Charge)"
     }
   }
 }
