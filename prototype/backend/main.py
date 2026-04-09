@@ -593,8 +593,8 @@ def _model_page_url(model_id: str) -> str:
         return "https://shop.vinfastauto.com/vn_vi"
     slug = _MODEL_URL_SLUGS.get(model_id.lower())
     if slug:
-        return f"https://shop.vinfastauto.com/vn_vi/dat-coc-xe-{slug}.html"
-    return f"https://shop.vinfastauto.com/vn_vi/dat-coc-xe-{model_id.lower()}.html"
+        return f"https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-{slug}.html"
+    return f"https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-{model_id.lower()}.html"
 
 
 def _source_url_from_name(source_name: str) -> str:
@@ -851,8 +851,8 @@ async def _mock_stream(message: str, thread_id: str, request_id: str) -> AsyncGe
 
     mock_citations = {
         "compare": [
-            {"label": "VF8 - Thông số", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html", "domain": "shop.vinfastauto.com", "score": 0.95},
-            {"label": "VF9 - Thông số", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf9.html", "domain": "shop.vinfastauto.com", "score": 0.94},
+            {"label": "VF8 - Thông số", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf8.html", "domain": "shop.vinfastauto.com", "score": 0.95},
+            {"label": "VF9 - Thông số", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf9.html", "domain": "shop.vinfastauto.com", "score": 0.94},
         ],
         "battery": [
             {"label": "Chính sách pin VinFast", "url": "https://vinfast.vn/chinh-sach-pin", "domain": "vinfast.vn", "score": 0.98},
@@ -861,7 +861,7 @@ async def _mock_stream(message: str, thread_id: str, request_id: str) -> AsyncGe
         "review": [
             {"label": "Otofun - Review VF8", "url": "https://www.otofun.net", "domain": "otofun.net", "score": 0.72},
             {"label": "VinFast Community", "url": "https://www.facebook.com/groups/vinfast", "domain": "facebook.com", "score": 0.70},
-            {"label": "Thông tin chính thức VF8", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html", "domain": "shop.vinfastauto.com", "score": 0.90},
+            {"label": "Thông tin chính thức VF8", "url": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf8.html", "domain": "shop.vinfastauto.com", "score": 0.90},
         ],
         "maintenance": [
             {"label": "Đặt lịch dịch vụ", "url": "https://vinfast.vn/dat-lich-dich-vu", "domain": "vinfast.vn", "score": 0.96},
