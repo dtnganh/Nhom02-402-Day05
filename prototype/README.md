@@ -11,9 +11,11 @@ prototype/
 ├── backend/
 │   ├── evals/            # Kịch bản tự động đánh giá chất lượng (run_eval.py)
 │   ├── main.py           # FastAPI app (SSE /chat, /health, /chat/history)
-│   ├── agent.py          # LangGraph StateGraph + 6 Tools + MemorySaver
+│   ├── agent.py          # Bộ não cấu hình Prompt & LangGraph Router
 │   ├── llm_fallback.py   # LLM fallback chain: Claude → OpenAI → GitHub Models → Gemini
-│   └── mock_data.json    # Dữ liệu giả lập VinFast (xe, giá, review, policy)
+│   ├── data/             # Nơi lưu trữ Mock data và Data Loader
+│   ├── tools/            # Gói công cụ chia theo nghiệp vụ (Xe, Chính sách, Bảo dưỡng)
+│   └── rag/              # Khối kiến trúc RAG chuyên sâu (Builder, Retriever, ChromaDB)
 ├── frontend/
 │   ├── index.html        # Giao diện chatbot (Brutalist + AI-Native)
 │   ├── style.css         # Design system (OLED dark, Space Mono, red accent)
@@ -71,7 +73,16 @@ CACHE_TTL_REVIEW_SECONDS=300
 
 > Nếu không có API key nào, server chạy ở **chế độ Mock** với dữ liệu giả lập. Frontend vẫn đầy đủ tính năng.
 
-### 3. Khởi động Backend
+### 3. Build Vector DB cho hệ thống RAG
+
+Hệ thống hiện tại tích hợp RAG chuyên nghiệp để tải Review thực tế bằng ChromaDB. Chạy lệnh sau để cắt (chunk) data và nhúng (embed) vào hệ thống.
+
+```powershell
+python backend/rag/builder.py
+```
+*(Bạn chỉ cần làm thao tác này 1 lần duy nhất, Vector DB sẽ sinh ra tại `backend/rag/chroma_db`. Thư mục này nặng và được bỏ qua bởi .gitignore)*
+
+### 4. Khởi động Backend
 
 ```powershell
 python backend/main.py
@@ -82,7 +93,7 @@ Server chạy tại: `http://localhost:8000`
 - Docs: `http://localhost:8000/docs`
 - Health: `http://localhost:8000/health`
 
-### 4. Mở Frontend
+### 5. Mở Frontend
 
 Mở file `frontend/index.html` trực tiếp trong trình duyệt.
 

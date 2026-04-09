@@ -140,6 +140,17 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error("❌ Lỗi khởi tạo LangGraph: %s", e)
 
+    # Kiểm tra RAG Vector DB
+    db_path = Path(__file__).parent / "rag" / "chroma_db"
+    if not db_path.exists():
+        logger.error("🚨 " + "="*56)
+        logger.error("🚨 CRITICAL: CHƯA BUILD VECTOR DB CHO HỆ THỐNG RAG!")
+        logger.error("🚨 Hãy dừng chạy Server và thực hiện lệnh sau:")
+        logger.error("🚨   python backend/rag/builder.py")
+        logger.error("🚨 " + "="*56)
+    else:
+        logger.info("✅ Vector DB (Chroma) đã sẵn sàng")
+
     logger.info("✅ Server ready. Port: 8000")
     logger.info("=" * 60)
     yield
