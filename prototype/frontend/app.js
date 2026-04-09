@@ -1160,21 +1160,17 @@ async function sendMessage(text) {
           msgEl.innerHTML = `
             <div class="message-avatar" aria-label="VinFast AI">AI</div>
             <div class="message-body">
-              <div class="message-bubble prose-content" id="${msgId}_bubble"><span class="stream-cursor" aria-hidden="true"></span></div>
+              <div class="message-bubble prose-content" id="${msgId}_bubble"></div>
             </div>`;
           DOM.messageList.appendChild(msgEl);
-          bubble = document.getElementById(`${msgId}_bubble`);
-          cursor = bubble.querySelector(".stream-cursor");
           scrollToBottom();
         }
-        // Append token text before cursor
+
+        // Append token text and morph DOM progressively
         const tokenText = data.text || "";
         finalAnswer += tokenText;
-        bubble.insertBefore(document.createTextNode(tokenText), cursor);
-        bubble.parentElement.scrollIntoView({
-          block: "end",
-          behavior: "nearest",
-        });
+
+        _morphStream(msgId, finalAnswer);
         break;
       }
 
@@ -1203,12 +1199,17 @@ async function sendMessage(text) {
         if (cTitleEnd)
           cTitleEnd.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px; color: var(--primary)"><path d="M20 6L9 17l-5-5"/></svg>ĐÃ HOÀN TẤT`;
 
-        // Remove streaming cursor
-        if (cursor) cursor.remove();
-
-        // Render final rich HTML (markdown-ish processing)
+        // Render final rich HTML
         if (bubble) {
-          bubble.innerHTML = _markdownToHtml(finalAnswer);
+          const finalHtml = _markdownToHtml(finalAnswer);
+          if (typeof morphdom !== "undefined") {
+            morphdom(
+              bubble,
+              `<div class="message-bubble prose-content" id="${msgId}_bubble">${finalHtml}</div>`,
+            );
+          } else {
+            bubble.innerHTML = finalHtml;
+          }
         }
 
         // Append metadata to message body
@@ -1328,6 +1329,40 @@ async function sendMessage(text) {
         break;
     }
   }
+}
+
+/* ── Streaming Morphdom Renderer ─────────────────────────── */
+let _morphThrottle;
+function _morphStream(msgId, rawText) {
+  if (_morphThrottle) cancelAnimationFrame(_morphThrottle);
+  _morphThrottle = requestAnimationFrame(() => {
+    const bubbleEl = document.getElementById(`${msgId}_bubble`);
+    if (!bubbleEl) return;
+
+    // Attempt to close incomplete markdown structures for stable visual streaming
+    let processedText = rawText;
+    const backticksCount = (processedText.match(/```/g) || []).length;
+    if (backticksCount % 2 !== 0) {
+      // Missing closing fence for a code block
+      processedText += "\n```";
+    }
+
+    const htmlContent = _markdownToHtml(processedText);
+
+    if (typeof morphdom !== "undefined") {
+      morphdom(
+        bubbleEl,
+        `<div class="message-bubble prose-content" id="${msgId}_bubble">${htmlContent}</div>`,
+      );
+    } else {
+      bubbleEl.innerHTML = htmlContent;
+    }
+
+    const parentContainer = bubbleEl.parentElement;
+    if (parentContainer) {
+      parentContainer.scrollIntoView({ block: "end", behavior: "nearest" });
+    }
+  });
 }
 
 /* ── Lightweight markdown → HTML converter ─────────────────── */
