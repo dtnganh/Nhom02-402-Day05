@@ -28,9 +28,20 @@ def search_cars(query: str, model_id: str = "") -> str:
                 if model_id.lower() in car["id"].lower():
                     results.append(car)
             else:
-                # Nếu LLM truyền query="vf9", tìm các xe có id="vf9..."
-                car_base = car["id"].split("_")[0]
-                if car_base in q_lower or car["id"].lower() in q_lower or car["name"].lower() in q_lower:
+                # Xây dựng bộ từ khóa (alias) chính xác cho từng dòng xe
+                name_clean = car["name"].lower().replace("vinfast ", "").strip()
+                base_name = name_clean.replace(" eco", "").replace(" plus", "").replace(" lux", "").replace(" dragon forged", "").strip()
+                
+                aliases = {
+                    name_clean,
+                    name_clean.replace(" ", ""),      # vfe34
+                    base_name,                        # vf wild
+                    base_name.replace(" ", ""),       # vfwild
+                    car["id"].lower()
+                }
+                
+                # Reverse check: xem có alias nào của xe tồn tại nguyên vẹn trong câu query không
+                if any(alias in q_lower for alias in aliases):
                     results.append(car)
         
         # Fallback: Nếu câu hỏi chung chung (không chứa tên xe), trả về hết
@@ -52,8 +63,20 @@ def compare_models(model_ids: list[str]) -> str:
     logger.info("Tool compare_models: %s", model_ids)
     results = []
     for mid in model_ids:
+        mid_lower = mid.lower()
         for car in CARS:
-            if car["id"] == mid.lower():
+            name_clean = car["name"].lower().replace("vinfast ", "").strip()
+            base_name = name_clean.replace(" eco", "").replace(" plus", "").replace(" lux", "").replace(" dragon forged", "").strip()
+            
+            aliases = {
+                name_clean,
+                name_clean.replace(" ", ""),
+                base_name,
+                base_name.replace(" ", ""),
+                car["id"].lower()
+            }
+            
+            if mid_lower in aliases:
                 results.append(car)
                 break
 
