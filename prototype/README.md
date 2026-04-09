@@ -12,7 +12,7 @@ prototype/
 │   ├── evals/            # Kịch bản tự động đánh giá chất lượng (run_eval.py)
 │   ├── main.py           # FastAPI app (SSE /chat, /health, /chat/history)
 │   ├── agent.py          # LangGraph StateGraph + 6 Tools + MemorySaver
-│   ├── llm_fallback.py   # LLM fallback chain: Claude → GitHub Models → Gemini
+│   ├── llm_fallback.py   # LLM fallback chain: Claude → OpenAI → GitHub Models → Gemini
 │   └── mock_data.json    # Dữ liệu giả lập VinFast (xe, giá, review, policy)
 ├── frontend/
 │   ├── index.html        # Giao diện chatbot (Brutalist + AI-Native)
@@ -51,8 +51,9 @@ pip install -r ../requirements.txt
 Mở file `.env` và điền ít nhất **một** API key:
 
 ```env
-# Ưu tiên Claude → GitHub Models → Gemini (fallback thứ tự)
+# Ưu tiên Claude → OpenAI → GitHub Models → Gemini (fallback thứ tự)
 ANTHROPIC_API_KEY=sk-ant-...       # Claude 3.5 Sonnet
+OPENAI_API_KEY=sk-proj-...         # OpenAI (GPT-4o-mini)
 GITHUB_PAT=ghp_...                  # GitHub Models (GPT-4o)
 GOOGLE_API_KEY=AIza...              # Gemini 1.5 Flash
 
@@ -101,7 +102,7 @@ User → [Frontend SSE]
          │          book_maintenance, get_charging_info
          ├── MemorySaver (thread_id context)
          └── LLM Fallback (llm_fallback.py)
-               Claude → GitHub Models → Gemini
+               Claude → OpenAI → GitHub Models → Gemini
 ```
 
 ### SSE Events từ `/chat`
@@ -171,9 +172,10 @@ python backend/evals/run_eval.py --base-url http://localhost:8000
 ```
 get_llm()
   ├── 1. Claude (ANTHROPIC_API_KEY)  ✓ nếu key hợp lệ
-  ├── 2. GitHub Models (GITHUB_PAT)  ✓ nếu bước 1 thất bại
-  ├── 3. Gemini (GOOGLE_API_KEY)     ✓ nếu bước 2 thất bại
-  └── 4. MockFallback                ✓ nếu không có key nào (demo mode)
+  ├── 2. OpenAI (OPENAI_API_KEY)     ✓ nếu bước 1 thất bại
+  ├── 3. GitHub Models (GITHUB_PAT)  ✓ nếu bước 2 thất bại
+  ├── 4. Gemini (GOOGLE_API_KEY)     ✓ nếu bước 3 thất bại
+  └── 5. MockFallback                ✓ nếu không có key nào (demo mode)
 ```
 
 ---

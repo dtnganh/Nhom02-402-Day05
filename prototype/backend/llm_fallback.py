@@ -63,6 +63,30 @@ def _try_github_models(model: str = "gpt-4o") -> Optional[BaseChatModel]:
         return None
 
 
+def _try_openai(model: str = "gpt-4o-mini") -> Optional[BaseChatModel]:
+    """
+    Thử khởi tạo GPT qua native OpenAI API.
+    """
+    api_key = os.getenv("OPENAI_API_KEY", "")
+    if not api_key or api_key.startswith("sk-placeholder"):
+        logger.debug("OPENAI_API_KEY chưa thiết lập – bỏ qua OpenAI")
+        return None
+    try:
+        from langchain_openai import ChatOpenAI
+        llm = ChatOpenAI(
+            model=model,
+            api_key=api_key,
+            max_tokens=4096,
+            temperature=0.1,
+        )
+        llm.invoke("ping")
+        logger.info("✅ LLM khởi tạo thành công: OpenAI (%s)", model)
+        return llm
+    except Exception as exc:
+        logger.warning("❌ OpenAI khởi tạo thất bại: %s – chuyển fallback", exc)
+        return None
+
+
 def _try_gemini(model: str = "gemini-2.5-flash") -> Optional[BaseChatModel]:
     """Thử khởi tạo Gemini qua Google Generative AI API."""
     api_key = os.getenv("GOOGLE_API_KEY", "")
@@ -88,15 +112,16 @@ def _try_gemini(model: str = "gemini-2.5-flash") -> Optional[BaseChatModel]:
 def get_llm() -> BaseChatModel:
     """
     Trả về LLM khả dụng đầu tiên theo thứ tự ưu tiên:
-      Claude → GitHub Models GPT-4o → Gemini 1.5 Flash
+      Claude → OpenAI → GitHub Models GPT-4o → Gemini 1.5 Flash
 
     Nếu không có API key nào hợp lệ, raise RuntimeError.
     """
-    llm = _try_claude() or _try_github_models() or _try_gemini()
+    llm = _try_claude() or _try_openai() or _try_github_models() or _try_gemini()
     if llm is None:
         raise RuntimeError(
             "Không thể khởi tạo bất kỳ LLM nào. "
             "Vui lòng thiết lập ít nhất một trong các biến môi trường: "
-            "ANTHROPIC_API_KEY, GITHUB_PAT, hoặc GOOGLE_API_KEY trong file .env"
+            "ANTHROPIC_API_KEY, OPENAI_API_KEY, GITHUB_PAT, hoặc GOOGLE_API_KEY trong file .env"
         )
     return llm
+
