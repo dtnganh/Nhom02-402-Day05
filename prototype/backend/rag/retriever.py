@@ -19,6 +19,45 @@ _embeddings = None
 _review_store = None
 _policy_store = None
 
+
+def _init_embeddings_with_fallback() -> Optional[OpenAIEmbeddings]:
+    """
+    Khởi tạo embeddings theo thứ tự ưu tiên:
+    1) OpenAI API (OPENAI_API_KEY)
+    2) GitHub Models (GITHUB_PAT)
+    """
+    openai_key = os.getenv("OPENAI_API_KEY", "")
+    github_pat = os.getenv("GITHUB_PAT", "")
+
+    if openai_key and not openai_key.startswith("sk-proj-placeholder"):
+        try:
+            logger.info("🔄 Retriever: thử OPENAI_API_KEY cho embeddings...")
+            emb = OpenAIEmbeddings(model=EMBEDDING_MODEL, api_key=openai_key)
+            emb.embed_query("test")
+            logger.info("✅ Retriever: dùng OpenAI Embeddings thành công")
+            return emb
+        except Exception as exc:
+            logger.warning("⚠️ OpenAI embeddings lỗi (%s). Chuyển fallback GitHub PAT...", exc)
+
+    if github_pat and not github_pat.startswith("ghp_placeholder"):
+        try:
+            logger.info("🔄 Retriever: thử GITHUB_PAT cho embeddings...")
+            emb = OpenAIEmbeddings(
+                model=EMBEDDING_MODEL,
+                api_key=github_pat,
+                base_url="https://models.inference.ai.azure.com",
+            )
+            emb.embed_query("test")
+            logger.info("✅ Retriever: dùng GitHub Models Embeddings thành công")
+            return emb
+        except Exception as exc:
+            logger.error("❌ GitHub PAT embeddings lỗi: %s", exc)
+
+    logger.error(
+        "❌ Không khởi tạo được embeddings. Hãy cấu hình OPENAI_API_KEY hoặc GITHUB_PAT trong file .env"
+    )
+    return None
+
 def _get_stores():
     """Khởi tạo kết nối Vector DB ở chế độ Đọc - Lazy Loading"""
     global _embeddings, _review_store, _policy_store
@@ -26,12 +65,11 @@ def _get_stores():
     if _review_store is not None and _policy_store is not None:
         return _review_store, _policy_store
 
-    api_key = os.getenv("OPENAI_API_KEY", "")
-    if not api_key or api_key.startswith("sk-placeholder"):
-        logger.warning("OPENAI_API_KEY không có. RAG Retriever có thể gặp lỗi.")
-
     try:
-        _embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
+        _embeddings = _init_embeddings_with_fallback()
+        if _embeddings is None:
+            return None, None
+
         str_db_path = str(CHROMA_DB_PATH)
         
         # Chỉ tạo kết nối, không mutate data
