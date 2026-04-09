@@ -2,142 +2,536 @@
   "cars": [
     {
       "id": "vf3",
-      "name": "VinFast VF3",
+      "name": "VinFast VF 3",
       "segment": "Mini SUV",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 235000000,
-      "price_without_battery": 185000000,
-      "battery_rental_monthly": 700000,
-      "battery_kwh": 23.2,
-      "range_km_wltp": 215,
-      "power_kw": 42,
-      "acceleration_0_100": 12.0,
+      "price_buy_battery": 322000000,
+      "price_without_battery": 240000000,
+      "battery_rental_monthly": 900000,
+      "battery_kwh": 18.64,
+      "range_km_wltp": 210,
+      "power_kw": 32,
+      "acceleration_0_100": 19.3,
       "seats": 4,
-      "color_options": ["Trắng Ngọc Trai", "Đen Huyền Bí", "Xanh Đại Dương", "Bạc Ánh Kim"],
+      "color_options": ["Trắng", "Đen", "Xanh dương", "Xám", "Vàng", "Hồng"],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 8,
+      "features": ["Màn hình 10 inch", "Túi khí người lái", "Cảm biến lùi"],
+      "notes": "Mẫu xe đô thị cỡ nhỏ, thiết kế vuông vức. Tầm vận hành thực tế khoảng 160-180km."
+    },
+    {
+      "id": "minio_green",
+      "name": "VinFast Minio Green",
+      "segment": "Minicar",
+      "year": 2025,
+      "status": "available",
+      "price_buy_battery": 310000000,
+      "price_without_battery": 269000000,
+      "battery_rental_monthly": 700000,
+      "battery_kwh": 18.0,
+      "range_km_wltp": 170,
+      "power_kw": 20,
+      "acceleration_0_100": 25.0,
+      "seats": 4,
+      "color_options": ["Xanh Lá", "Trắng"],
       "warranty_years": 5,
       "warranty_km": 100000,
       "battery_warranty_years": 8,
-      "features": ["Cảm biến lùi", "Camera lùi", "Màn hình 10 inch", "Apple CarPlay"],
-      "notes": "Mẫu xe mini SUV giá rẻ nhất, phù hợp đô thị. Review thực tế pin ~180km."
+      "features": ["Thiết kế tối giản", "Cần số sau vô lăng", "Tối ưu cho taxi"],
+      "notes": "Dòng xe chuyên dụng cho kinh doanh dịch vụ, thay thế xe máy trong nội đô."
+    },
+    {
+      "id": "vf5",
+      "name": "VinFast VF 5",
+      "segment": "A-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 548000000,
+      "price_without_battery": 468000000,
+      "battery_rental_monthly": 1200000,
+      "battery_kwh": 37.23,
+      "range_km_wltp": 326,
+      "power_kw": 100,
+      "acceleration_0_100": 10.9,
+      "seats": 5,
+      "color_options": ["Trắng", "Đen", "Đỏ", "Xanh dương", "Bạc"],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 8,
+      "features": ["Cảnh báo phương tiện cắt ngang", "Trợ lý ảo", "6 túi khí"],
+      "notes": "Tên gọi chung cho dòng VF 5, hiện tại phiên bản thương mại phổ biến nhất là VF 5 Plus."
     },
     {
       "id": "vf5plus",
-      "name": "VinFast VF5 Plus",
-      "segment": "B-SUV",
+      "name": "VinFast VF 5 Plus",
+      "segment": "A-SUV",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 458000000,
-      "price_without_battery": 358000000,
-      "battery_rental_monthly": 1190000,
-      "battery_kwh": 37.4,
+      "price_buy_battery": 548000000,
+      "price_without_battery": 468000000,
+      "battery_rental_monthly": 1200000,
+      "battery_kwh": 37.23,
       "range_km_wltp": 326,
-      "power_kw": 130,
-      "acceleration_0_100": 8.3,
+      "power_kw": 100,
+      "acceleration_0_100": 10.9,
       "seats": 5,
-      "color_options": ["Trắng Tinh Khôi", "Đen Huyền Bí", "Đỏ Ngọn Lửa", "Xanh Biển"],
+      "color_options": ["Trắng", "Đen", "Đỏ", "Xanh dương", "Bạc"],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 8,
+      "features": ["Cảnh báo điểm mù", "6 túi khí", "Hệ thống ESC"],
+      "notes": "Xe quốc dân, tối ưu chi phí vận hành cho cả gia đình và kinh doanh."
+    },
+    {
+      "id": "herio_green",
+      "name": "VinFast Herio Green",
+      "segment": "A-SUV",
+      "year": 2025,
+      "status": "available",
+      "price_buy_battery": 530000000,
+      "price_without_battery": 499000000,
+      "battery_rental_monthly": 1000000,
+      "battery_kwh": 37.0,
+      "range_km_wltp": 300,
+      "power_kw": 100,
+      "acceleration_0_100": 10.9,
+      "seats": 5,
+      "color_options": ["Xanh Lá", "Trắng"],
       "warranty_years": 5,
       "warranty_km": 100000,
       "battery_warranty_years": 8,
-      "features": ["Cruise control", "6 túi khí", "Phanh ABS/EBD", "Màn hình 10 inch"],
-      "notes": "Phù hợp gia đình nhỏ đô thị. Review thực tế pin ~260-280km ở tốc độ bình thường."
+      "features": ["Ghế da simili bền bỉ", "Hệ thống quản lý vận tải", "Sạc nhanh"],
+      "notes": "Phiên bản chuyên dụng của VF 5 dành cho các doanh nghiệp vận tải xanh."
     },
     {
       "id": "vf6",
-      "name": "VinFast VF6",
-      "segment": "B-SUV Premium",
+      "name": "VinFast VF 6",
+      "segment": "B-SUV",
       "year": 2024,
       "status": "available",
       "price_buy_battery": 765000000,
-      "price_without_battery": 634000000,
-      "battery_rental_monthly": 1390000,
-      "battery_rental_km_limit": 3000,
-      "battery_rental_extra_per_km": 960,
+      "price_without_battery": 675000000,
+      "battery_rental_monthly": 1800000,
+      "battery_kwh": 59.6,
+      "range_km_wltp": 399,
+      "power_kw": 130,
+      "acceleration_0_100": 8.9,
+      "seats": 5,
+      "color_options": ["Trắng", "Bạc", "Đỏ", "Xanh dương"],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 8,
+      "features": ["Màn hình 12.9 inch", "Hỗ trợ giữ làn", "Phanh tay điện tử"],
+      "notes": "Thông số dựa trên bản tiêu chuẩn (Base/S). Dòng SUV hạng B tối ưu cho đô thị."
+    },
+    {
+      "id": "vf6s",
+      "name": "VinFast VF 6S",
+      "segment": "B-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 765000000,
+      "price_without_battery": 675000000,
+      "battery_rental_monthly": 1800000,
+      "battery_kwh": 59.6,
+      "range_km_wltp": 399,
+      "power_kw": 130,
+      "acceleration_0_100": 8.9,
+      "seats": 5,
+      "color_options": ["Trắng", "Bạc", "Đỏ", "Xanh dương"],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 8,
+      "features": ["Màn hình 12.9 inch", "ADSA cơ bản", "4 túi khí"],
+      "notes": "Phiên bản tiêu chuẩn của VF 6, cân bằng giữa giá thành và hiệu năng."
+    },
+    {
+      "id": "vf6plus",
+      "name": "VinFast VF 6 Plus",
+      "segment": "B-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 855000000,
+      "price_without_battery": 765000000,
+      "battery_rental_monthly": 1800000,
       "battery_kwh": 59.6,
       "range_km_wltp": 381,
       "power_kw": 150,
-      "acceleration_0_100": 7.0,
+      "acceleration_0_100": 8.5,
       "seats": 5,
-      "color_options": ["Trắng Ngọc Trai", "Đen Huyền Bí", "Xanh Pastel", "Vàng Cát"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "color_options": ["Trắng", "Bạc", "Đỏ", "Xanh dương"],
+      "warranty_years": 7,
+      "warranty_km": 160000,
+      "battery_warranty_years": 8,
+      "features": ["ADAS cấp độ 2", "Cửa sổ trời", "8 túi khí"],
+      "notes": "Mạnh mẽ và đầy đủ công nghệ an toàn nhất phân khúc B."
+    },
+    {
+      "id": "vfe34",
+      "name": "VinFast VF e34",
+      "segment": "C-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 830000000,
+      "price_without_battery": 710000000,
+      "battery_rental_monthly": 1900000,
+      "battery_kwh": 42,
+      "range_km_wltp": 285,
+      "power_kw": 110,
+      "acceleration_0_100": 9.0,
+      "seats": 5,
+      "color_options": ["Xanh VinFast", "Trắng", "Xám", "Đen"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2", "Phanh tự động khẩn cấp", "Giữ làn", "Màn hình 12.9 inch", "Đèn LED Matrix"],
-      "notes": "Giảm tiếng ồn tốt, nội thất cao cấp hơn VF5 nhiều. Pin thực tế ~320-340km."
+      "features": ["Trợ lý ảo", "Cảnh báo chệch làn", "Camera 360"],
+      "notes": "Dòng xe điện đầu tiên, không gian nội thất cực kỳ rộng rãi so với kích thước."
+    },
+    {
+      "id": "nerio_green",
+      "name": "VinFast Nerio Green",
+      "segment": "C-SUV",
+      "year": 2025,
+      "status": "available",
+      "price_buy_battery": 780000000,
+      "price_without_battery": 668000000,
+      "battery_rental_monthly": 1500000,
+      "battery_kwh": 42.0,
+      "range_km_wltp": 280,
+      "power_kw": 110,
+      "acceleration_0_100": 9.0,
+      "seats": 5,
+      "color_options": ["Xanh Lá", "Xám"],
+      "warranty_years": 7,
+      "warranty_km": 140000,
+      "battery_warranty_years": 10,
+      "features": ["Nội thất rộng rãi", "Camera lùi cao cấp", "Hỗ trợ lái cơ bản"],
+      "notes": "Mẫu xe dịch vụ phân khúc C, tập trung vào trải nghiệm khách hàng và độ bền."
     },
     {
       "id": "vf7",
-      "name": "VinFast VF7",
-      "segment": "C-SUV Coupe",
+      "name": "VinFast VF 7",
+      "segment": "C-SUV",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 850000000,
-      "price_without_battery": 730000000,
-      "battery_rental_monthly": 1600000,
+      "price_buy_battery": 999000000,
+      "price_without_battery": 850000000,
+      "battery_rental_monthly": 2900000,
+      "battery_kwh": 59.6,
+      "range_km_wltp": 375,
+      "power_kw": 130,
+      "acceleration_0_100": 10.0,
+      "seats": 5,
+      "color_options": ["Trắng", "Xám", "Đen", "Đỏ"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Thiết kế khí động học", "Trợ lý ảo ViVi", "Tay nắm cửa ẩn"],
+      "notes": "Phiên bản tiêu chuẩn của dòng VF 7 với thiết kế hiện đại và công nghệ ADAS cơ bản."
+    },
+    {
+      "id": "vf7s",
+      "name": "VinFast VF 7S",
+      "segment": "C-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 999000000,
+      "price_without_battery": 850000000,
+      "battery_rental_monthly": 2900000,
+      "battery_kwh": 59.6,
+      "range_km_wltp": 375,
+      "power_kw": 130,
+      "acceleration_0_100": 10.0,
+      "seats": 5,
+      "color_options": ["Trắng", "Xám", "Đen", "Đỏ"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Màn hình 12.9 inch", "Tay nắm cửa ẩn", "ADAS cơ bản"],
+      "notes": "Thiết kế tương lai, phù hợp cho người yêu thích phong cách."
+    },
+    {
+      "id": "vf7plus",
+      "name": "VinFast VF 7 Plus",
+      "segment": "C-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 1233000000,
+      "price_without_battery": 1034000000,
+      "battery_rental_monthly": 2900000,
       "battery_kwh": 75.3,
       "range_km_wltp": 431,
       "power_kw": 260,
-      "acceleration_0_100": 5.9,
+      "acceleration_0_100": 5.8,
       "seats": 5,
-      "color_options": ["Đen Huyền Bí", "Trắng Ánh Bạc", "Đỏ Ruby", "Xanh Midnight"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "color_options": ["Trắng", "Xám", "Đen", "Xanh dương"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2+", "HUD kính lái", "Đèn LED Matrix", "Âm ly Harman", "Pano roof"],
-      "notes": "Thiết kế Coupe thể thao nhất phân khúc. Pin thực tế ~370km đường bình thường."
+      "features": ["Dẫn động AWD", "ADAS nâng cao", "Trần kính toàn cảnh"],
+      "notes": "Hiệu năng cực cao, tăng tốc như xe thể thao hạng sang."
     },
     {
-      "id": "vf8plus",
-      "name": "VinFast VF8 Plus",
+      "id": "vf8s",
+      "name": "VinFast VF 8S",
+      "segment": "D-SUV",
+      "year": 2026,
+      "status": "available",
+      "price_buy_battery": 1120000000,
+      "price_without_battery": 1019000000,
+      "battery_rental_monthly": 2500000,
+      "battery_kwh": 87.7,
+      "range_km_wltp": 531,
+      "power_kw": 150,
+      "acceleration_0_100": 11.8,
+      "seats": 5,
+      "color_options": ["Trắng", "Đen", "Xám", "Bạc"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["ADAS cơ bản", "Màn hình 15.6 inch", "10 túi khí", "Mâm 19 inch"],
+      "notes": "Phiên bản tiêu chuẩn mới của dòng VF 8, tập trung vào tầm di chuyển xa và tối ưu chi phí."
+    },
+    {
+      "id": "vf8",
+      "name": "VinFast VF 8",
       "segment": "D-SUV",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 1057000000,
-      "price_without_battery": 812000000,
-      "battery_rental_monthly": 1900000,
-      "battery_kwh": 82.0,
-      "range_km_wltp": 420,
-      "power_kw": 300,
-      "power_hp": 402,
+      "price_buy_battery": 1344000000,
+      "price_without_battery": 1170000000,
+      "battery_rental_monthly": 3000000,
+      "battery_kwh": 87.7,
+      "range_km_wltp": 471,
+      "power_kw": 260,
       "acceleration_0_100": 5.9,
-      "seats": 7,
-      "color_options": ["Đen Huyền Bí", "Trắng Ngọc Trai", "Xanh Biễn Sâu", "Đỏ Anh Đào"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "seats": 5,
+      "color_options": ["Trắng", "Đen", "Đỏ", "Cam", "Xanh"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2+", "Màn hình 15.6 inch", "Âm ly 12 loa", "Pano roof", "Ghế massage", "OTA over-the-air"],
-      "notes": "Dòng flagship D-SUV. Pin thực tế ~340km. Tiếng gió nhẹ ở tốc độ >100km/h theo review cộng đồng."
+      "features": ["Hệ thống 11 túi khí", "Màn hình 15.6 inch", "Smart Service"],
+      "notes": "Mẫu SUV điện cỡ trung cao cấp, sở hữu công nghệ an toàn 5 sao ASEAN NCAP."
+    },
+    {
+      "id": "vf8lux",
+      "name": "VinFast VF 8 Lux",
+      "segment": "D-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 1344000000,
+      "price_without_battery": 1170000000,
+      "battery_rental_monthly": 3000000,
+      "battery_kwh": 87.7,
+      "range_km_wltp": 471,
+      "power_kw": 260,
+      "acceleration_0_100": 5.9,
+      "seats": 5,
+      "color_options": ["Trắng", "Đen", "Đỏ", "Xanh", "Cam"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Hỗ trợ đỗ xe", "11 túi khí", "Ghế sưởi"],
+      "notes": "Dòng SUV hạng D sang trọng, phục vụ di chuyển đường dài thoải mái."
+    },
+    {
+      "id": "vf8luxplus",
+      "name": "VinFast VF 8 Lux Plus",
+      "segment": "D-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 1546000000,
+      "price_without_battery": 1359000000,
+      "battery_rental_monthly": 3000000,
+      "battery_kwh": 87.7,
+      "range_km_wltp": 457,
+      "power_kw": 300,
+      "acceleration_0_100": 5.5,
+      "seats": 5,
+      "color_options": ["Trắng", "Đen", "Xanh", "Bạc"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Dẫn động 2 cầu", "Thông gió ghế", "Hỗ trợ lái nâng cao"],
+      "notes": "Phiên bản cao cấp nhất của VF 8 với đầy đủ option công nghệ."
+    },
+    {
+      "id": "vf9eco",
+      "name": "VinFast VF 9 Eco",
+      "segment": "E-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 2114000000,
+      "price_without_battery": 1589000000,
+      "battery_rental_monthly": 4500000,
+      "battery_kwh": 123,
+      "range_km_wltp": 626,
+      "power_kw": 300,
+      "acceleration_0_100": 6.5,
+      "seats": 7,
+      "color_options": ["Trắng", "Đen", "Xanh lá", "Xám"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Treo khí nén", "Màn hình HUD", "ADAS toàn diện"],
+      "notes": "SUV hạng sang cỡ lớn, không gian cực kỳ rộng rãi cho 7 người."
+    },
+    {
+      "id": "vf9",
+      "name": "VinFast VF 9",
+      "segment": "E-SUV",
+      "year": 2024,
+      "status": "available",
+      "price_buy_battery": 2114000000,
+      "price_without_battery": 1589000000,
+      "battery_rental_monthly": 4500000,
+      "battery_kwh": 123,
+      "range_km_wltp": 626,
+      "power_kw": 300,
+      "acceleration_0_100": 6.5,
+      "seats": 7,
+      "color_options": ["Trắng", "Đen", "Xám", "Xanh lá"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Đèn pha LED Matrix", "Ghế chỉnh điện 12 hướng", "Treo khí nén"],
+      "notes": "Dòng xe SUV điện đầu bảng, cung cấp không gian rộng rãi và tính năng giải trí đa dạng."
     },
     {
       "id": "vf9plus",
-      "name": "VinFast VF9 Plus",
-      "segment": "E-SUV 3 hàng ghế",
+      "name": "VinFast VF 9 Plus",
+      "segment": "E-SUV",
       "year": 2024,
       "status": "available",
-      "price_buy_battery": 1570000000,
-      "price_without_battery": 1267000000,
-      "battery_rental_monthly": 2800000,
-      "battery_kwh": 123.0,
-      "range_km_wltp": 594,
+      "price_buy_battery": 2314000000,
+      "price_without_battery": 1786000000,
+      "battery_rental_monthly": 4500000,
+      "battery_kwh": 123,
+      "range_km_wltp": 602,
       "power_kw": 300,
-      "power_hp": 402,
       "acceleration_0_100": 6.5,
-      "seats": 7,
-      "color_options": ["Đen Huyền Bí", "Trắng Bạch Tuyết", "Vàng Kim"],
-      "warranty_years": 5,
-      "warranty_km": 150000,
+      "seats": 6,
+      "color_options": ["Trắng", "Đen", "Xanh dương", "Tím"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
       "battery_warranty_years": 10,
-      "battery_warranty_km": 200000,
-      "features": ["ADAS Level 2+", "Màn hình 15.6 inch", "Âm ly 15 loa premium", "Pano roof toàn cảnh", "Ghế captain", "3 hàng ghế 7 chỗ rộng rãi"],
-      "notes": "SUV 3 hàng ghế lớn nhất của VinFast. Phạm vi tốt nhất. Pin thực tế ~500km."
+      "features": ["Ghế thương gia", "Massage/Sưởi/Thông gió", "Điều hòa 3 vùng"],
+      "notes": "Phiên bản cao cấp nhất, hàng ghế thứ 2 dạng độc lập (Captain Seat)."
+    },
+    {
+      "id": "limo_green",
+      "name": "VinFast Limo Green",
+      "segment": "MPV",
+      "year": 2025,
+      "status": "available",
+      "price_buy_battery": 890000000,
+      "price_without_battery": 749000000,
+      "battery_rental_monthly": 2000000,
+      "battery_kwh": 60.0,
+      "range_km_wltp": 400,
+      "power_kw": 150,
+      "acceleration_0_100": 8.5,
+      "seats": 7,
+      "color_options": ["Xanh Lá", "Đen"],
+      "warranty_years": 7,
+      "warranty_km": 140000,
+      "battery_warranty_years": 10,
+      "features": ["7 chỗ ngồi", "Cửa trượt (tùy chọn)", "Điều hòa 2 vùng"],
+      "notes": "Mẫu MPV điện phục vụ đưa đón sân bay và khách sạn."
+    },
+    {
+      "id": "vfwild",
+      "name": "VinFast VF Wild",
+      "segment": "Pickup",
+      "year": 2026,
+      "status": "pre-order",
+      "price_buy_battery": 1050000000,
+      "price_without_battery": 850000000,
+      "battery_rental_monthly": 3500000,
+      "battery_kwh": 100.0,
+      "range_km_wltp": 450,
+      "power_kw": 300,
+      "acceleration_0_100": 6.0,
+      "seats": 5,
+      "color_options": ["Nâu Xám", "Cam", "Xám Titan", "Đen"],
+      "warranty_years": 10,
+      "warranty_km": 200000,
+      "battery_warranty_years": 10,
+      "features": ["Tính năng Mid-gate", "Gương chiếu hậu kỹ thuật số", "Trần kính toàn cảnh", "Dẫn động AWD"],
+      "notes": "Mẫu bán tải điện đầu tiên. Thùng xe có thể mở rộng từ 1.5m lên 2.4m nhờ gập hàng ghế sau."
     }
   ],
 
   "maintenance_schedule": {
-    "vf8plus": [
+    "vf3": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra hệ thống điện & pin traction",
+          "Kiểm tra đèn, cảm biến lùi",
+          "Cập nhật phần mềm hệ thống",
+          "Vệ sinh cabin",
+          "Kiểm tra hệ thống lái"
+        ],
+        "estimated_duration_hours": 1.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 800000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Kiểm tra và thay cabin filter",
+          "Kiểm tra motor điện 32kW",
+          "Kiểm tra hệ thống sạc",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1800000
+      }
+    ],
+    "minio_green": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra phanh hiệu suất cao (xe dịch vụ)",
+          "Kiểm tra hệ thống điện & pin",
+          "Kiểm tra cơ cấu cần số sau vô lăng",
+          "Vệ sinh khoang lái"
+        ],
+        "estimated_duration_hours": 1.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 700000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay lọc gió cabin",
+          "Kiểm tra motor 20kW",
+          "Kiểm tra cổng sạc tần suất cao",
+          "Kiểm tra hệ thống treo"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1600000
+      }
+    ],
+    "vf5": [
       {
         "interval_km": 10000,
         "interval_months": 6,
@@ -147,11 +541,423 @@
           "Kiểm tra & vệ sinh phanh",
           "Kiểm tra dầu phanh, thay nếu cần",
           "Kiểm tra hệ thống điện & pin traction",
-          "Kiểm tra đèn, cảm biến",
-          "Cập nhật phần mềm OTA (nếu có)",
+          "Kiểm tra đèn, 6 túi khí",
+          "Cập nhật phần mềm OTA",
+          "Vệ sinh cabin",
+          "Test drive tổng kiểm tra"
+        ],
+        "estimated_duration_hours": 2.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1000000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Kiểm tra và thay cabin filter",
+          "Kiểm tra motor 100kW",
+          "Kiểm tra hệ thống sạc & OBC",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2200000
+      }
+    ],
+    "vf5plus": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra hệ thống điện & pin 37.23kWh",
+          "Kiểm tra đèn, cảm biến điểm mù",
+          "Cập nhật phần mềm OTA",
+          "Vệ sinh cabin & cabin filter",
+          "Test drive tổng kiểm tra"
+        ],
+        "estimated_duration_hours": 2.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1000000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Kiểm tra và thay cabin filter",
+          "Kiểm tra motor 100kW",
+          "Kiểm tra hệ thống sạc & OBC",
+          "Kiểm tra hệ thống ESC và gầm"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2200000
+      }
+    ],
+    "herio_green": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh (tần suất cao)",
+          "Kiểm tra hệ thống điện & pin",
+          "Kiểm tra hệ thống quản lý vận tải",
+          "Vệ sinh ghế da simili",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 950000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Kiểm tra và thay cabin filter",
+          "Kiểm tra motor điện",
+          "Kiểm tra cổng sạc nhanh",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2000000
+      }
+    ],
+    "vf6": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra dầu phanh, thay nếu cần",
+          "Kiểm tra hệ thống điện & pin traction",
+          "Kiểm tra hệ thống giữ làn",
+          "Cập nhật OTA",
+          "Vệ sinh cabin & cabin filter",
+          "Test drive tổng kiểm tra"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1200000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 130kW",
+          "Kiểm tra OBC",
+          "Kiểm tra phanh tay điện tử"
+        ],
+        "estimated_duration_hours": 3.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2500000
+      }
+    ],
+    "vf6s": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra hệ thống điện & pin 59.6kWh",
+          "Kiểm tra 4 túi khí",
+          "Cập nhật màn hình 12.9 inch",
+          "Vệ sinh cabin",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1200000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 130kW",
+          "Kiểm tra hệ thống làm mát",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 3.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2500000
+      }
+    ],
+    "vf6plus": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra hệ thống điện & pin",
+          "Kiểm tra ADAS cấp độ 2",
+          "Cập nhật phần mềm OTA",
+          "Kiểm tra cơ cấu cửa sổ trời",
+          "Vệ sinh cabin & cabin filter",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1300000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 150kW",
+          "Kiểm tra hệ thống sạc & OBC",
+          "Kiểm tra gầm, treo"
+        ],
+        "estimated_duration_hours": 3.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2800000
+      }
+    ],
+    "vfe34": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra dầu phanh",
+          "Kiểm tra hệ thống điện & pin 42kWh",
+          "Kiểm tra camera 360",
+          "Cập nhật trợ lý ảo",
+          "Vệ sinh cabin & lọc gió",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1200000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 110kW",
+          "Kiểm tra hệ thống sạc",
+          "Kiểm tra gầm, thước lái"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2600000
+      }
+    ],
+    "nerio_green": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất lốp",
+          "Kiểm tra phanh & dầu phanh",
+          "Kiểm tra pin 42.0kWh",
+          "Kiểm tra camera lùi cao cấp",
+          "Vệ sinh nội thất",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1100000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor điện",
+          "Kiểm tra hệ thống làm mát",
+          "Kiểm tra khung gầm"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2400000
+      }
+    ],
+    "vf7": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra dầu phanh",
+          "Kiểm tra điện & pin traction",
+          "Kiểm tra cơ cấu tay nắm cửa ẩn",
+          "Cập nhật OTA",
+          "Vệ sinh cabin",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1400000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 130kW",
+          "Kiểm tra hệ thống sạc",
+          "Kiểm tra gầm, hệ thống treo"
+        ],
+        "estimated_duration_hours": 4.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3000000
+      }
+    ],
+    "vf7s": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra phanh & dầu phanh",
+          "Kiểm tra hệ thống điện & pin 59.6kWh",
+          "Kiểm tra màn hình 12.9 inch",
+          "Cập nhật OTA",
+          "Vệ sinh cabin",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1400000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor điện 130kW",
+          "Kiểm tra cơ cấu làm mát pin",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 4.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3000000
+      }
+    ],
+    "vf7plus": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra phanh hiệu suất cao",
+          "Kiểm tra hệ thống điện & pin 75.3kWh",
+          "Kiểm tra ADAS nâng cao",
+          "Kiểm tra trần kính toàn cảnh",
+          "Cập nhật OTA",
+          "Vệ sinh cabin & lọc gió",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1600000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra hệ dẫn động AWD & motor 260kW",
+          "Kiểm tra OBC",
+          "Kiểm tra hệ thống treo thể thao"
+        ],
+        "estimated_duration_hours": 4.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3500000
+      }
+    ],
+    "vf8s": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất lốp mâm 19 inch",
+          "Kiểm tra phanh & dầu phanh",
+          "Kiểm tra điện & pin 87.7kWh",
+          "Kiểm tra màn hình 15.6 inch",
+          "Cập nhật OTA",
+          "Vệ sinh cabin",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1400000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 150kW",
+          "Kiểm tra hệ thống sạc",
+          "Kiểm tra gầm, hệ thống lái"
+        ],
+        "estimated_duration_hours": 4.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3000000
+      }
+    ],
+    "vf8": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra dầu phanh",
+          "Kiểm tra điện & pin traction",
+          "Kiểm tra 11 túi khí",
+          "Cập nhật phần mềm OTA",
           "Vệ sinh cabin & cabin filter",
           "Kiểm tra hệ thống lái",
-          "Test drive tổng kiểm tra"
+          "Test drive"
         ],
         "estimated_duration_hours": 2.5,
         "cost_in_warranty": 0,
@@ -165,12 +971,253 @@
           "Tất cả hạng mục 10.000 km",
           "Kiểm tra và thay cabin filter",
           "Kiểm tra motor & hộp số điện",
-          "Kiểm tra hệ thống sạc & OBC",
+          "Kiểm tra OBC",
           "Kiểm tra gầm, khớp nối"
         ],
         "estimated_duration_hours": 4.0,
         "cost_in_warranty": 0,
         "cost_after_warranty_vnd": 3200000
+      }
+    ],
+    "vf8lux": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra dầu phanh",
+          "Kiểm tra điện & pin traction",
+          "Kiểm tra tính năng đỗ xe thông minh",
+          "Cập nhật OTA",
+          "Vệ sinh cabin & lọc gió",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1500000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 260kW & hộp số điện",
+          "Kiểm tra sạc",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 4.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3200000
+      }
+    ],
+    "vf8luxplus": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra hệ thống điện & pin 87.7kWh",
+          "Kiểm tra dẫn động 2 cầu",
+          "Kiểm tra thông gió/sưởi ghế",
+          "Cập nhật OTA",
+          "Vệ sinh cabin & cabin filter",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1800000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra 2 motor (tổng 300kW)",
+          "Kiểm tra OBC",
+          "Kiểm tra gầm, khớp nối nâng cao"
+        ],
+        "estimated_duration_hours": 4.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3800000
+      }
+    ],
+    "vf9eco": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất lốp cỡ lớn",
+          "Kiểm tra phanh & dầu phanh",
+          "Kiểm tra treo khí nén",
+          "Kiểm tra hệ thống điện & pin 123kWh",
+          "Cập nhật phần mềm OTA",
+          "Vệ sinh cabin 7 chỗ",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2000000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay lọc gió cabin đa vùng",
+          "Kiểm tra motor 300kW",
+          "Kiểm tra hệ thống sạc",
+          "Kiểm tra cơ cấu gầm & khí nén"
+        ],
+        "estimated_duration_hours": 4.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 4000000
+      }
+    ],
+    "vf9": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra áp suất & mòn lốp",
+          "Kiểm tra & vệ sinh phanh",
+          "Kiểm tra dầu phanh",
+          "Kiểm tra hệ thống treo khí nén",
+          "Kiểm tra đèn LED Matrix",
+          "Cập nhật OTA",
+          "Vệ sinh cabin & cabin filter",
+          "Test drive tổng kiểm tra"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2000000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Kiểm tra và thay cabin filter",
+          "Kiểm tra motor 300kW & hộp số",
+          "Kiểm tra sạc & OBC",
+          "Kiểm tra gầm, khớp nối"
+        ],
+        "estimated_duration_hours": 4.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 4000000
+      }
+    ],
+    "vf9plus": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra lốp, phanh",
+          "Kiểm tra hệ thống treo khí nén",
+          "Kiểm tra cơ cấu ghế thương gia",
+          "Kiểm tra chức năng massage/sưởi/thông gió",
+          "Kiểm tra điều hòa 3 vùng",
+          "Cập nhật OTA",
+          "Vệ sinh nội thất cao cấp",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 3.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2500000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay lọc gió cabin đa vùng",
+          "Kiểm tra motor kép 300kW",
+          "Kiểm tra hệ thống làm mát dung lượng lớn",
+          "Kiểm tra gầm, hệ thống treo khí nén"
+        ],
+        "estimated_duration_hours": 5.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 4800000
+      }
+    ],
+    "limo_green": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra lốp chịu tải",
+          "Kiểm tra phanh & dầu phanh",
+          "Kiểm tra cơ cấu cửa trượt MPV",
+          "Kiểm tra hệ thống điều hòa 2 vùng",
+          "Vệ sinh khoang 7 chỗ ngồi",
+          "Test drive"
+        ],
+        "estimated_duration_hours": 2.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1300000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor 150kW",
+          "Kiểm tra bản lề, ray trượt cửa",
+          "Kiểm tra gầm, hệ thống treo chịu tải"
+        ],
+        "estimated_duration_hours": 4.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 2800000
+      }
+    ],
+    "vfwild": [
+      {
+        "interval_km": 10000,
+        "interval_months": 6,
+        "label": "Bảo dưỡng 6 tháng / 10.000 km",
+        "items": [
+          "Kiểm tra lốp địa hình (nếu có)",
+          "Kiểm tra hệ thống phanh",
+          "Kiểm tra tính năng Mid-gate",
+          "Kiểm tra gương chiếu hậu kỹ thuật số",
+          "Cập nhật phần mềm OTA",
+          "Vệ sinh cabin",
+          "Test drive AWD"
+        ],
+        "estimated_duration_hours": 3.0,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 1800000
+      },
+      {
+        "interval_km": 30000,
+        "interval_months": 18,
+        "label": "Bảo dưỡng 30.000 km / 18 tháng",
+        "items": [
+          "Tất cả hạng mục 10.000 km",
+          "Thay cabin filter",
+          "Kiểm tra motor kép 300kW",
+          "Kiểm tra cơ cấu gập thùng xe",
+          "Kiểm tra hệ thống treo bán tải, khớp nối gầm"
+        ],
+        "estimated_duration_hours": 4.5,
+        "cost_in_warranty": 0,
+        "cost_after_warranty_vnd": 3800000
       }
     ]
   },
