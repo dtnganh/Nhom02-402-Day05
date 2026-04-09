@@ -30,7 +30,7 @@ python eval_framework.py
 *(Kết quả sẽ được ghi vào thư mục `outputs/`)*
 
 ### Bước 2: Gọi Máy Chấm Thi
-Script này sẽ mượn sức mạnh của mô hình mạnh nhất hiện có (OpenAI hoặc GPT-4o) để đọc hiểu từng câu trả lời thực tế và đối chiếu với barem để phát hiện ảo giác (Hallucination).
+Script này sẽ mượn sức mạnh của mô hình mạnh nhất hiện có (khác với LLM dùng để làm bài thi) để đọc hiểu từng câu trả lời thực tế và đối chiếu với barem để phát hiện ảo giác (Hallucination).
 ```bash
 python judge.py
 ```
