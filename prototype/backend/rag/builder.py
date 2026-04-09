@@ -6,6 +6,7 @@
 
 import json
 import logging
+import os
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -32,8 +33,42 @@ def build_vector_db():
     if not ENV_PATH.exists():
         logger.warning(f"Cảnh báo: Không tìm thấy file .env tại {ENV_PATH}")
 
-    # 1. Khởi tạo OpenAI Embeddings
-    embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
+    # 1. Khởi tạo OpenAI Embeddings với Fallback
+    openai_key = os.getenv("OPENAI_API_KEY")
+    github_pat = os.getenv("GITHUB_PAT")
+    
+    embeddings = None
+
+    if openai_key and not openai_key.startswith("sk-proj-placeholder"):
+        try:
+            logger.info("🔄 Thử khởi tạo Embeddings với OPENAI_API_KEY...")
+            embeddings_temp = OpenAIEmbeddings(
+                model="text-embedding-3-small", 
+                api_key=openai_key
+            )
+            # Gọi thử API để xác nhận Key hoạt động
+            embeddings_temp.embed_query("test")
+            embeddings = embeddings_temp
+            logger.info("✅ Sử dụng OpenAI API thành công.")
+        except Exception as e:
+            logger.warning(f"⚠️ OpenAI API thất bại ({e}). Đang chuyển sang GitHub Models (Fallback)...")
+
+    if not embeddings and github_pat:
+        try:
+            logger.info("🔄 Thử khởi tạo Embeddings với GITHUB_PAT...")
+            embeddings = OpenAIEmbeddings(
+                model="text-embedding-3-small",
+                api_key=github_pat,
+                base_url="https://models.inference.ai.azure.com",
+            )
+            embeddings.embed_query("test")
+            logger.info("✅ Sử dụng GitHub Models API thành công.")
+        except Exception as e:
+            logger.error(f"❌ GitHub API thất bại ({e}).")
+
+    if not embeddings:
+        logger.error("❌ Lỗi: Cả OpenAI và GitHub Models đều không hoạt động. Vui lòng kiểm tra lại file .env!")
+        return
 
     # 2. Khởi tạo Kho RAG (Chroma)
     str_db_path = str(CHROMA_DB_PATH)
@@ -57,14 +92,24 @@ def build_vector_db():
     logger.info("🔄 Đang xử lý dữ liệu Review...")
     review_docs = []
     for review in data.get("reviews", []):
-        page_content = f"Đánh giá xe {review['car_model']} từ {review['source']}:\n{review['summary']}\nƯu điểm: {', '.join(review.get('pros', []))}\nNhược điểm: {', '.join(review.get('cons', []))}"
-        metadata = {
-            "car_model": review["car_model"],
-            "sentiment": review["sentiment"],
-            "source": review["source"],
-            "date": review["date"],
-            "rating": review.get("rating", 0)
-        }
+        if "review_text" in review:
+            page_content = f"Đánh giá xe {review.get('car_model', '')} từ {review.get('reviewer_name', 'Khách hàng')}:\n{review.get('review_text', '')}"
+            metadata = {
+                "car_model": review.get("car_model", ""),
+                "sentiment": review.get("sentiment", "unknown"),
+                "source": review.get("source", "Hệ thống"),
+                "date": review.get("date", ""),
+                "rating": review.get("rating", 0)
+            }
+        else:
+            page_content = f"Đánh giá xe {review.get('car_model', '')} từ {review.get('source', '')}:\n{review.get('summary', '')}\nƯu điểm: {', '.join(review.get('pros', []))}\nNhược điểm: {', '.join(review.get('cons', []))}"
+            metadata = {
+                "car_model": review.get("car_model", ""),
+                "sentiment": review.get("sentiment", "unknown"),
+                "source": review.get("source", ""),
+                "date": review.get("date", ""),
+                "rating": review.get("rating", 0)
+            }
         review_docs.append(Document(page_content=page_content, metadata=metadata))
 
     if review_docs:
