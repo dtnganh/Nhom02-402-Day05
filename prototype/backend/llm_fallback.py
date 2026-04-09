@@ -1,8 +1,7 @@
 # ============================================================
 # backend/llm_fallback.py
 # Chiến lược khởi tạo LLM với cơ chế fallback xếp tầng:
-#   Claude (Anthropic) → GitHub Models (OpenAI-compatible)
-#                      → Gemini (Google)
+#   OpenRouter → Claude (Anthropic) → OpenAI → GitHub Models → Gemini (Google)
 # ============================================================
 
 import logging
@@ -109,19 +108,46 @@ def _try_gemini(model: str = "gemini-2.5-flash") -> Optional[BaseChatModel]:
         return None
 
 
+def _try_openrouter(model: str = "openai/gpt-oss-20b:free") -> Optional[BaseChatModel]:
+    """
+    Thử khởi tạo LLM qua OpenRouter API.
+    Hỗ trợ tham số reasoning_details của các model mới (như Gemma).
+    """
+    api_key = os.getenv("OPENROUTER_API_KEY", "")
+    if not api_key or api_key.startswith("sk-or-placeholder"):
+        logger.debug("OPENROUTER_API_KEY chưa thiết lập – bỏ qua OpenRouter")
+        return None
+    try:
+        from langchain_openai import ChatOpenAI
+        llm = ChatOpenAI(
+            model=model,
+            api_key=api_key,
+            base_url="https://openrouter.ai/api/v1",
+            max_tokens=4096,
+            temperature=0.1,
+            model_kwargs={"extra_body": {"reasoning": {"enabled": True}}}
+        )
+        llm.invoke("ping")
+        logger.info("✅ LLM khởi tạo thành công: OpenRouter (%s)", model)
+        return llm
+    except Exception as exc:
+        logger.warning("❌ OpenRouter khởi tạo thất bại: %s – chuyển fallback", exc)
+        return None
+
+
 def get_llm() -> BaseChatModel:
     """
     Trả về LLM khả dụng đầu tiên theo thứ tự ưu tiên:
-      Claude → OpenAI → GitHub Models GPT-4o → Gemini 1.5 Flash
+      OpenRouter → Claude → OpenAI → GitHub Models GPT-4o → Gemini 1.5 Flash
 
     Nếu không có API key nào hợp lệ, raise RuntimeError.
     """
-    llm = _try_claude() or _try_openai() or _try_github_models() or _try_gemini()
+    llm = _try_openrouter() or _try_claude() or _try_openai() or _try_github_models() or _try_gemini()
     if llm is None:
         raise RuntimeError(
             "Không thể khởi tạo bất kỳ LLM nào. "
             "Vui lòng thiết lập ít nhất một trong các biến môi trường: "
-            "ANTHROPIC_API_KEY, OPENAI_API_KEY, GITHUB_PAT, hoặc GOOGLE_API_KEY trong file .env"
+            "OPENROUTER_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY, GITHUB_PAT, hoặc GOOGLE_API_KEY trong file .env"
         )
     return llm
 

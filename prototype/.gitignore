@@ -55,3 +55,6 @@ venv.bak/
 # Vector DB (RAG)
 chroma_db/
 backend/rag/chroma_db/
+
+# Evaluation
+evaluation/outputs/
