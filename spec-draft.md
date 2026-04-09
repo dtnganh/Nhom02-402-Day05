@@ -189,7 +189,7 @@ Sản phẩm là một AI Chatbot đóng vai trò Augmentation: Trợ lý đắc
 
 *   **Nguyễn Đức Hoàng Phúc (Product Manager / QA):** Ánh xạ các User Stories vào thực tế. Chuẩn bị tập Golden Dataset (Baseline) gồm 100 câu hỏi hóc búa nhất của khách VinFast để test hệ thống. Đóng vai khách hàng để liên tục Red-teaming sản phẩm.
 
-*   **Phạm Lê Hoàng Nam (UI/UX & Frontend):** Hiện thực hóa giao diện Chatbot. Thiết kế trải nghiệm mượt mà cho 4 Paths (Happy, Low-confidence, Failure, Correction). Làm nổi bật UI phần "Trích dẫn nguồn" (Trust building) và các nút CTA "Gặp tư vấn viên", "Đặt lịch lái thử" để chốt sales.
+*   **Phạm Lê Hoàng Nam (UI/UX, Frontend & Backend):** Phụ trách phát triển BE và FE cho Prototype. Hiện thực hóa giao diện Chatbot và tích hợp hệ thống Agent. Thiết kế trải nghiệm mượt mà cho 4 Paths. Làm nổi bật UI phần "Trích dẫn nguồn" và các nút CTA để chốt sales.
 
 ---
 
