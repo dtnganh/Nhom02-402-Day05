@@ -26,12 +26,9 @@ def _get_stores():
     if _review_store is not None and _policy_store is not None:
         return _review_store, _policy_store
 
-    api_key = os.getenv("OPENAI_API_KEY", "")
-    if not api_key or api_key.startswith("sk-placeholder"):
-        logger.warning("OPENAI_API_KEY không có. RAG Retriever có thể gặp lỗi.")
-
     try:
-        _embeddings = OpenAIEmbeddings(model=EMBEDDING_MODEL)
+        from rag.embeddings_fallback import get_embeddings
+        _embeddings = get_embeddings()
         str_db_path = str(CHROMA_DB_PATH)
         
         # Chỉ tạo kết nối, không mutate data

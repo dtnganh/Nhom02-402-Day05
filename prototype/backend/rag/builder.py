@@ -33,42 +33,9 @@ def build_vector_db():
     if not ENV_PATH.exists():
         logger.warning(f"Cảnh báo: Không tìm thấy file .env tại {ENV_PATH}")
 
-    # 1. Khởi tạo OpenAI Embeddings với Fallback
-    openai_key = os.getenv("OPENAI_API_KEY")
-    github_pat = os.getenv("GITHUB_PAT")
-    
-    embeddings = None
-
-    if openai_key and not openai_key.startswith("sk-proj-placeholder"):
-        try:
-            logger.info("🔄 Thử khởi tạo Embeddings với OPENAI_API_KEY...")
-            embeddings_temp = OpenAIEmbeddings(
-                model="text-embedding-3-small", 
-                api_key=openai_key
-            )
-            # Gọi thử API để xác nhận Key hoạt động
-            embeddings_temp.embed_query("test")
-            embeddings = embeddings_temp
-            logger.info("✅ Sử dụng OpenAI API thành công.")
-        except Exception as e:
-            logger.warning(f"⚠️ OpenAI API thất bại ({e}). Đang chuyển sang GitHub Models (Fallback)...")
-
-    if not embeddings and github_pat:
-        try:
-            logger.info("🔄 Thử khởi tạo Embeddings với GITHUB_PAT...")
-            embeddings = OpenAIEmbeddings(
-                model="text-embedding-3-small",
-                api_key=github_pat,
-                base_url="https://models.inference.ai.azure.com",
-            )
-            embeddings.embed_query("test")
-            logger.info("✅ Sử dụng GitHub Models API thành công.")
-        except Exception as e:
-            logger.error(f"❌ GitHub API thất bại ({e}).")
-
-    if not embeddings:
-        logger.error("❌ Lỗi: Cả OpenAI và GitHub Models đều không hoạt động. Vui lòng kiểm tra lại file .env!")
-        return
+    # 1. Khởi tạo Embeddings thông minh (có Fallback tự động)
+    from rag.embeddings_fallback import get_embeddings
+    embeddings = get_embeddings()
 
     # 2. Khởi tạo Kho RAG (Chroma)
     str_db_path = str(CHROMA_DB_PATH)
