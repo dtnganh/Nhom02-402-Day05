@@ -1,0 +1,85 @@
+flowchart TD
+    %% Define Styles
+    classDef userAccess fill:#2dd4bf,stroke:#0f766e,stroke-width:2px,color:#000
+    classDef cacheNode fill:#fbbf24,stroke:#b45309,stroke-width:2px,color:#000
+    classDef llmNode fill:#818cf8,stroke:#3730a3,stroke-width:2px,color:#fff
+    classDef toolNode fill:#f472b6,stroke:#be185d,stroke-width:2px,color:#fff
+    classDef edgeCase fill:#f87171,stroke:#991b1b,stroke-width:2px,color:#fff
+    classDef successOut fill:#4ade80,stroke:#166534,stroke-width:2px,color:#000
+    classDef database fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#fff
+
+    %% --------------------------------------------------------
+    %% 1. USER INPUT & API GATEWAY
+    %% --------------------------------------------------------
+    User((User)) -->|Gõ câu hỏi trên Giao diện| Frontend[Frontend Javascript]
+    Frontend -->|POST /chat (SSE)| FastAPI[FastAPI Backend - main.py]
+
+    FastAPI --> IntentInfer[Phân loại Intent Tag & Tính Cache Key]
+    
+    %% --------------------------------------------------------
+    %% 2. CACHE LAYER
+    %% --------------------------------------------------------
+    IntentInfer --> CheckCache{Có trong Cache?}
+    CheckCache -->|Yes| CacheHit[Stream kết quả từ Cache]:::cacheNode
+    CacheHit --> OutputSSE
+    CheckCache -->|No| SubgraphGraph
+
+    %% --------------------------------------------------------
+    %% 3. HỆ THỐNG LANGGRAPH AGENT (agent.py)
+    %% --------------------------------------------------------
+    subgraph SubgraphGraph [Luồng LangGraph & Agentic Workflow]
+        direction TB
+        AgentNode(Agent Node: Nhúng System Prompt + Context)
+        
+        %% Fallback Engine
+        AgentNode --> InitLLM{Khởi tạo LLM}
+        InitLLM -->|Có API Key| CallClaude[Claude 3.5]:::llmNode
+        InitLLM -->|Claude sập/Error| CallOpenAI[OpenAI gpt-4o-mini]:::llmNode
+        InitLLM -->|OpenAI Error| CallGitHub[GitHub Models]:::llmNode
+        InitLLM -->|GitHub Error| CallGemini[Gemini Flash]:::llmNode
+        
+        CallClaude -.-> Generates[LLM Suy luận]
+        CallOpenAI -.-> Generates
+        CallGitHub -.-> Generates
+        CallGemini -.-> Generates
+
+        InitLLM -->|Không có API Key nào| MockFallback[Mock Stream API]:::edgeCase
+        MockFallback --> OutputSSE
+
+        Generates --> HasTools{Có gọi Tool không?}
+        HasTools -->|Không| StopGen[LLM tự trả lời thông tin chung]
+        
+        %% Tool Execution
+        HasTools -->|Có| ToolRouting{Router Định tuyến Tool}
+        ToolRouting --> |So sánh/Tìm xe| CarTools[search_cars / compare]:::toolNode
+        ToolRouting --> |Bảo dưỡng| MaintTools[book_maintenance]:::toolNode
+        ToolRouting --> |Chính sách/Sạc| PolicyTools[get_battery_policy / charging]:::toolNode
+        ToolRouting --> |Trải nghiệm/Đánh giá| RAGTool[get_reviews / RAG Retriever]:::toolNode
+
+        %% RAG Subgraph
+        RAGTool --> VectorDB[(ChromaDB Vector Store)]:::database
+        VectorDB -->|Không tìm thấy| RAGEmpty[Low Confidence: Trả về []]:::edgeCase
+        VectorDB -->|Error kết nối DB| RAGError[Status: Error]:::edgeCase
+        VectorDB -->|Thành công| RAGSuccess[Tóm tắt Sentiment + Reviews]:::toolNode
+
+        CarTools & MaintTools & PolicyTools & RAGEmpty & RAGError & RAGSuccess --> AgentReSynthesize[Quay lại Agent Node - Tổng hợp câu trả lời]
+        AgentReSynthesize --> Generates
+    end
+
+    %% --------------------------------------------------------
+    %% 4. XỬ LÝ HẬU KỲ & SSE OUTPUT (main.py)
+    %% --------------------------------------------------------
+    StopGen --> Guardrails[Guardrails & Confidence Checking]
+    
+    Guardrails --> CalcConfidence{Tính Điểm Tin Cậy}
+    CalcConfidence --> |High / Mid| FinalAnswer[Lưu Answer vào Cache]:::cacheNode
+    CalcConfidence --> |Low / Error Tool| FallbackWarning[Cảnh báo không đủ thông tin / Đề nghị gặp tư vấn viên]:::edgeCase
+
+    FinalAnswer --> GenerateCitations[Trích xuất Nguồn & Citations]
+    FallbackWarning --> GenerateCitations
+
+    GenerateCitations --> OutputSSE(Stream từng token đến Frontend)
+    OutputSSE --> Frontend
+
+    %% Styling Elements
+    class User userAccess
