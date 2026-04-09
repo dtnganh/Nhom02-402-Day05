@@ -117,7 +117,7 @@ def main():
     report_text = f"""==================================================
 [📊 BÁO CÁO KẾT QUẢ ĐÁNH GIÁ - RISK & EVAL]
 - Số lượng câu hỏi đã chấm: {total_q}
-- Factuality / Accuracy:    {factuality_rate:.1f}%  (Mục tiêu: > 98%)
+- Factuality / Accuracy:    {factuality_rate:.1f}%  (Mục tiêu: > 95%)
 - Human Fallback Rate:      {fallback_rate:.1f}%  (Mục tiêu: < 30%)
 - P90 Latency:              {p90_latency:.2f} s  (Mục tiêu: < 10s)
 

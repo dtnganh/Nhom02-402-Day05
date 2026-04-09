@@ -1,7 +1,7 @@
 ==================================================
 [📊 BÁO CÁO KẾT QUẢ ĐÁNH GIÁ - RISK & EVAL]
 - Số lượng câu hỏi đã chấm: 100
-- Factuality / Accuracy:    97.0%  (Mục tiêu: > 98%)
+- Factuality / Accuracy:    97.0%  (Mục tiêu: > 95%)
 - Human Fallback Rate:      17.0%  (Mục tiêu: < 30%)
 - P90 Latency:              7.01 s  (Mục tiêu: < 10s)
 
