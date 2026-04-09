@@ -2,9 +2,10 @@
 # backend/agent.py
 # LangGraph Agent: Intent Router → Agent → Tools → Guardrails
 #
-# Author: Mai Tấn Thành (AI Architect — Nhóm 2)
-# Phạm vi: System Prompt, Architecture tổng thể, Intent Router,
-#           Guardrails chống Hallucination
+# Author   : Mai Tấn Thành (AI Architect — Nhóm 2)
+# Phạm vi  : System Prompt, Architecture tổng thể, Intent Router,
+#             Guardrails chống Hallucination
+# Updated  : 09/04/2026 — tích hợp tools/ module, load prompt từ prompts.md
 # ============================================================
 
 import json

@@ -108,7 +108,7 @@ def _try_gemini(model: str = "gemini-2.5-flash") -> Optional[BaseChatModel]:
         return None
 
 
-def _try_openrouter(model: str = "openai/gpt-oss-20b:free") -> Optional[BaseChatModel]:
+def _try_openrouter(model: str = "arcee-ai/trinity-large-preview:free") -> Optional[BaseChatModel]:
     """
     Thử khởi tạo LLM qua OpenRouter API.
     Hỗ trợ tham số reasoning_details của các model mới (như Gemma).
