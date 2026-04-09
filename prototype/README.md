@@ -12,10 +12,10 @@ prototype/
 │   ├── evals/            # Kịch bản tự động đánh giá chất lượng (run_eval.py)
 │   ├── main.py           # FastAPI app (SSE /chat, /health, /chat/history)
 │   ├── agent.py          # Bộ não cấu hình Prompt & LangGraph Router
-│   ├── llm_fallback.py   # LLM fallback chain: Claude → OpenAI → GitHub Models → Gemini
+│   ├── llm_fallback.py   # LLM fallback chain: OpenRouter → Claude → OpenAI → GitHub Models → Gemini
 │   ├── data/             # Nơi lưu trữ Mock data và Data Loader
 │   ├── tools/            # Gói công cụ chia theo nghiệp vụ (Xe, Chính sách, Bảo dưỡng)
-│   └── rag/              # Khối kiến trúc RAG chuyên sâu (Builder, Retriever, ChromaDB)
+│   └── rag/              # Khối kiến trúc RAG chuyên sâu kèm Embeddings Fallback
 ├── frontend/
 │   ├── index.html        # Giao diện chatbot (Brutalist + AI-Native)
 │   ├── style.css         # Design system (OLED dark, Space Mono, red accent)
@@ -53,11 +53,12 @@ pip install -r ../requirements.txt
 Mở file `.env` và điền ít nhất **một** API key:
 
 ```env
-# Ưu tiên Claude → OpenAI → GitHub Models → Gemini (fallback thứ tự)
-ANTHROPIC_API_KEY=sk-ant-...       # Claude 3.5 Sonnet
-OPENAI_API_KEY=sk-proj-...         # OpenAI (GPT-4o-mini)
-GITHUB_PAT=ghp_...                  # GitHub Models (GPT-4o)
-GOOGLE_API_KEY=AIza...              # Gemini 1.5 Flash
+# Ưu tiên OpenRouter → Claude → OpenAI → GitHub Models → Gemini (fallback thứ tự)
+OPENROUTER_API_KEY=sk-or-v1-...    # OpenRouter (hỗ trợ nhiều model free)
+ANTHROPIC_API_KEY=sk-ant-...       # Claude 3.5 Sonnet (Chỉ có mô hình Chat, không có Embeddings)
+OPENAI_API_KEY=sk-proj-...         # OpenAI (GPT-4o-mini & text-embedding-3-small)
+GITHUB_PAT=ghp_...                  # GitHub Models (Hỗ trợ Azure Embeddings)
+GOOGLE_API_KEY=AIza...              # Gemini 1.5 Flash (Hỗ trợ text-embedding-004)
 
 # LangSmith tracing
 LANGCHAIN_TRACING_V2=true
@@ -75,12 +76,16 @@ CACHE_TTL_REVIEW_SECONDS=300
 
 ### 3. Build Vector DB cho hệ thống RAG
 
-Hệ thống hiện tại tích hợp RAG chuyên nghiệp để tải Review thực tế bằng ChromaDB. Chạy lệnh sau để cắt (chunk) data và nhúng (embed) vào hệ thống.
+Hệ thống hiện tại tích hợp RAG chuyên nghiệp cho Dữ liệu phi cấu trúc (Reviews, Chính sách) bằng Chroma DB.
+Mô hình Vector Embeddings cũng được cấu hình fallback đa tầng để hỗ trợ mọi thành viên trong đội:
+👉 `GitHub Models` → `OpenAI` → `Gemini` → `HuggingFace (CPU Local miễn phí)`
+
+Trước khi chạy hệ thống, **BẮT BUỘC** bạn phải chạy lệnh sau để cắt (chunk) và nhúng (embed) data để tạo DB cục bộ trên máy mình (tùy thuộc vào bạn nhập key nào trong .env):
 
 ```powershell
 python backend/rag/builder.py
 ```
-*(Bạn chỉ cần làm thao tác này 1 lần duy nhất, Vector DB sẽ sinh ra tại `backend/rag/chroma_db`. Thư mục này nặng và được bỏ qua bởi .gitignore)*
+*(Vector DB sẽ sinh ra tại `backend/rag/chroma_db` dựa trên kích thước dimension Tensor của bạn. Thư mục này nặng và được bỏ qua bởi .gitignore)*
 
 ### 4. Khởi động Backend
 

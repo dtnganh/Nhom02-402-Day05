@@ -66,10 +66,8 @@ def _get_stores():
         return _review_store, _policy_store
 
     try:
-        _embeddings = _init_embeddings_with_fallback()
-        if _embeddings is None:
-            return None, None
-
+        from rag.embeddings_fallback import get_embeddings
+        _embeddings = get_embeddings()
         str_db_path = str(CHROMA_DB_PATH)
         
         # Chỉ tạo kết nối, không mutate data
